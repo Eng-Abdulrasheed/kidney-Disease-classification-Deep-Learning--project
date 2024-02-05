@@ -269,3 +269,9 @@ x==========x]
 [2024-02-05 18:05:52,891: INFO: main: >>>>>> stage training completed <<<<<<
 
 x==========x]
+[2024-02-05 23:29:10,782: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-05 23:29:10,787: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-05 23:29:10,788: INFO: common: created directory at: artifacts]
+[2024-02-05 23:29:22,357: INFO: common: json file saved at: scores.json]
+[2024-02-05 23:29:25,821: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2024-02-05 23:29:26,233: INFO: builder_impl: Assets written to: /tmp/tmpas0tsrlf/model/data/model/assets]
