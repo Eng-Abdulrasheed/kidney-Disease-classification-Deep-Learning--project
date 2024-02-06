@@ -275,3 +275,389 @@ x==========x]
 [2024-02-05 23:29:22,357: INFO: common: json file saved at: scores.json]
 [2024-02-05 23:29:25,821: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
 [2024-02-05 23:29:26,233: INFO: builder_impl: Assets written to: /tmp/tmpas0tsrlf/model/data/model/assets]
+[2024-02-06 20:15:41,543: INFO: main: Welcom to our custom log]
+[2024-02-06 20:15:41,543: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:15:41,545: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:15:41,546: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:15:41,546: INFO: common: created directory at: artifacts]
+[2024-02-06 20:15:41,546: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:15:41,546: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:16:33,142: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:16:33,427: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:16:33,427: INFO: main: *******************]
+[2024-02-06 20:16:33,427: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:16:33,429: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:16:33,429: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:16:33,430: INFO: common: created directory at: artifacts]
+[2024-02-06 20:16:33,430: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:16:33,700: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:16:33,906: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:16:33,906: INFO: main: *******************]
+[2024-02-06 20:16:33,906: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:16:33,907: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:16:33,908: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:16:33,908: INFO: common: created directory at: artifacts]
+[2024-02-06 20:16:33,908: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:17:29,436: INFO: main: >>>>>> stage training completed <<<<<<
+
+x==========x]
+[2024-02-06 20:17:29,436: INFO: main: *******************]
+[2024-02-06 20:17:29,436: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2024-02-06 20:17:29,438: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:17:29,438: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:17:29,439: INFO: common: created directory at: artifacts]
+[2024-02-06 20:17:47,312: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:17:47,314: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:17:47,314: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:19:33,695: INFO: main: Welcom to our custom log]
+[2024-02-06 20:19:33,695: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:19:33,697: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:19:33,698: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:19:33,698: INFO: common: created directory at: artifacts]
+[2024-02-06 20:19:33,698: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:19:33,698: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:20:25,786: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:20:26,077: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:20:26,077: INFO: main: *******************]
+[2024-02-06 20:20:26,077: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:20:26,078: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:20:26,079: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:20:26,079: INFO: common: created directory at: artifacts]
+[2024-02-06 20:20:26,079: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:20:26,346: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:20:26,536: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:20:26,536: INFO: main: *******************]
+[2024-02-06 20:20:26,536: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:20:26,538: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:20:26,539: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:20:26,539: INFO: common: created directory at: artifacts]
+[2024-02-06 20:20:26,539: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:21:22,412: INFO: main: >>>>>> stage training completed <<<<<<
+
+x==========x]
+[2024-02-06 20:21:22,412: INFO: main: *******************]
+[2024-02-06 20:21:22,412: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2024-02-06 20:21:22,414: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:21:22,415: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:21:22,415: INFO: common: created directory at: artifacts]
+[2024-02-06 20:21:40,155: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:21:40,155: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:21:43,512: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2024-02-06 20:21:43,871: INFO: builder_impl: Assets written to: /tmp/tmptu6wuv85/model/data/model/assets]
+[2024-02-06 20:24:34,002: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:25:05,757: INFO: main: Welcom to our custom log]
+[2024-02-06 20:25:05,757: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:25:05,759: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:25:05,760: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:25:05,760: INFO: common: created directory at: artifacts]
+[2024-02-06 20:25:05,760: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:25:05,760: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:25:57,266: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:25:57,566: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:25:57,566: INFO: main: *******************]
+[2024-02-06 20:25:57,566: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:25:57,567: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:25:57,568: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:25:57,568: INFO: common: created directory at: artifacts]
+[2024-02-06 20:25:57,568: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:25:57,830: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:25:58,012: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:25:58,012: INFO: main: *******************]
+[2024-02-06 20:25:58,012: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:25:58,013: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:25:58,014: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:25:58,015: INFO: common: created directory at: artifacts]
+[2024-02-06 20:25:58,015: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:26:00,948: ERROR: main: Graph execution error:
+
+Detected at node 'categorical_crossentropy/softmax_cross_entropy_with_logits' defined at (most recent call last):
+    File "main.py", line 41, in <module>
+      prepare_base_model.main()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+      training.train()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+      self.model.fit(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1685, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1284, in train_function
+      return step_function(self, iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1268, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1249, in run_step
+      outputs = model.train_step(data)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1051, in train_step
+      loss = self.compute_loss(x, y, y_pred, sample_weight)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1109, in compute_loss
+      return self.compiled_loss(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/compile_utils.py", line 265, in __call__
+      loss_value = loss_obj(y_t, y_p, sample_weight=sw)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 142, in __call__
+      losses = call_fn(y_true, y_pred)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 268, in call
+      return ag_fn(y_true, y_pred, **self._fn_kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 1984, in categorical_crossentropy
+      return backend.categorical_crossentropy(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/backend.py", line 5565, in categorical_crossentropy
+      return tf.nn.softmax_cross_entropy_with_logits(
+Node: 'categorical_crossentropy/softmax_cross_entropy_with_logits'
+logits and labels must be broadcastable: logits_size=[16,3] labels_size=[16,2]
+	 [[{{node categorical_crossentropy/softmax_cross_entropy_with_logits}}]] [Op:__inference_train_function_1463]]
+Traceback (most recent call last):
+  File "main.py", line 41, in <module>
+    prepare_base_model.main()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+    training.train()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+    self.model.fit(
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/tensorflow/python/eager/execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node 'categorical_crossentropy/softmax_cross_entropy_with_logits' defined at (most recent call last):
+    File "main.py", line 41, in <module>
+      prepare_base_model.main()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+      training.train()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+      self.model.fit(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1685, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1284, in train_function
+      return step_function(self, iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1268, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1249, in run_step
+      outputs = model.train_step(data)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1051, in train_step
+      loss = self.compute_loss(x, y, y_pred, sample_weight)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1109, in compute_loss
+      return self.compiled_loss(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/compile_utils.py", line 265, in __call__
+      loss_value = loss_obj(y_t, y_p, sample_weight=sw)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 142, in __call__
+      losses = call_fn(y_true, y_pred)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 268, in call
+      return ag_fn(y_true, y_pred, **self._fn_kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 1984, in categorical_crossentropy
+      return backend.categorical_crossentropy(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/backend.py", line 5565, in categorical_crossentropy
+      return tf.nn.softmax_cross_entropy_with_logits(
+Node: 'categorical_crossentropy/softmax_cross_entropy_with_logits'
+logits and labels must be broadcastable: logits_size=[16,3] labels_size=[16,2]
+	 [[{{node categorical_crossentropy/softmax_cross_entropy_with_logits}}]] [Op:__inference_train_function_1463]
+[2024-02-06 20:26:42,081: INFO: main: Welcom to our custom log]
+[2024-02-06 20:26:42,081: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:26:42,083: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:26:42,084: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:26:42,084: INFO: common: created directory at: artifacts]
+[2024-02-06 20:26:42,084: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:26:42,084: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:27:33,188: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:27:33,480: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:27:33,480: INFO: main: *******************]
+[2024-02-06 20:27:33,480: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:27:33,481: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:27:33,482: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:27:33,482: INFO: common: created directory at: artifacts]
+[2024-02-06 20:27:33,482: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:27:33,746: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:27:33,933: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:27:33,933: INFO: main: *******************]
+[2024-02-06 20:27:33,933: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:27:33,935: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:27:33,936: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:27:33,936: INFO: common: created directory at: artifacts]
+[2024-02-06 20:27:33,936: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:27:36,867: ERROR: main: Graph execution error:
+
+Detected at node 'categorical_crossentropy/softmax_cross_entropy_with_logits' defined at (most recent call last):
+    File "main.py", line 41, in <module>
+      prepare_base_model.main()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+      training.train()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+      self.model.fit(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1685, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1284, in train_function
+      return step_function(self, iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1268, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1249, in run_step
+      outputs = model.train_step(data)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1051, in train_step
+      loss = self.compute_loss(x, y, y_pred, sample_weight)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1109, in compute_loss
+      return self.compiled_loss(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/compile_utils.py", line 265, in __call__
+      loss_value = loss_obj(y_t, y_p, sample_weight=sw)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 142, in __call__
+      losses = call_fn(y_true, y_pred)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 268, in call
+      return ag_fn(y_true, y_pred, **self._fn_kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 1984, in categorical_crossentropy
+      return backend.categorical_crossentropy(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/backend.py", line 5565, in categorical_crossentropy
+      return tf.nn.softmax_cross_entropy_with_logits(
+Node: 'categorical_crossentropy/softmax_cross_entropy_with_logits'
+logits and labels must be broadcastable: logits_size=[16,3] labels_size=[16,2]
+	 [[{{node categorical_crossentropy/softmax_cross_entropy_with_logits}}]] [Op:__inference_train_function_1463]]
+Traceback (most recent call last):
+  File "main.py", line 41, in <module>
+    prepare_base_model.main()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+    training.train()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+    self.model.fit(
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 70, in error_handler
+    raise e.with_traceback(filtered_tb) from None
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/tensorflow/python/eager/execute.py", line 52, in quick_execute
+    tensors = pywrap_tfe.TFE_Py_Execute(ctx._handle, device_name, op_name,
+tensorflow.python.framework.errors_impl.InvalidArgumentError: Graph execution error:
+
+Detected at node 'categorical_crossentropy/softmax_cross_entropy_with_logits' defined at (most recent call last):
+    File "main.py", line 41, in <module>
+      prepare_base_model.main()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/stage_03_model_training.py", line 21, in main
+      training.train()
+    File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/components/model_training.py", line 76, in train
+      self.model.fit(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/utils/traceback_utils.py", line 65, in error_handler
+      return fn(*args, **kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1685, in fit
+      tmp_logs = self.train_function(iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1284, in train_function
+      return step_function(self, iterator)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1268, in step_function
+      outputs = model.distribute_strategy.run(run_step, args=(data,))
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1249, in run_step
+      outputs = model.train_step(data)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1051, in train_step
+      loss = self.compute_loss(x, y, y_pred, sample_weight)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/training.py", line 1109, in compute_loss
+      return self.compiled_loss(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/engine/compile_utils.py", line 265, in __call__
+      loss_value = loss_obj(y_t, y_p, sample_weight=sw)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 142, in __call__
+      losses = call_fn(y_true, y_pred)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 268, in call
+      return ag_fn(y_true, y_pred, **self._fn_kwargs)
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/losses.py", line 1984, in categorical_crossentropy
+      return backend.categorical_crossentropy(
+    File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/keras/backend.py", line 5565, in categorical_crossentropy
+      return tf.nn.softmax_cross_entropy_with_logits(
+Node: 'categorical_crossentropy/softmax_cross_entropy_with_logits'
+logits and labels must be broadcastable: logits_size=[16,3] labels_size=[16,2]
+	 [[{{node categorical_crossentropy/softmax_cross_entropy_with_logits}}]] [Op:__inference_train_function_1463]
+[2024-02-06 20:28:00,326: INFO: main: Welcom to our custom log]
+[2024-02-06 20:28:00,326: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:28:00,327: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:28:00,328: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:28:00,328: INFO: common: created directory at: artifacts]
+[2024-02-06 20:28:00,328: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:28:00,329: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:28:52,208: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:28:52,577: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:28:52,577: INFO: main: *******************]
+[2024-02-06 20:28:52,577: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:28:52,578: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:28:52,579: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:28:52,579: INFO: common: created directory at: artifacts]
+[2024-02-06 20:28:52,579: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:28:52,892: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:28:53,089: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:28:53,089: INFO: main: *******************]
+[2024-02-06 20:28:53,089: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:28:53,090: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:28:53,091: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:28:53,091: INFO: common: created directory at: artifacts]
+[2024-02-06 20:28:53,091: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:29:48,808: INFO: main: >>>>>> stage training completed <<<<<<
+
+x==========x]
+[2024-02-06 20:29:48,808: INFO: main: *******************]
+[2024-02-06 20:29:48,808: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2024-02-06 20:29:48,810: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:29:48,811: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:29:48,811: INFO: common: created directory at: artifacts]
+[2024-02-06 20:30:06,418: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:30:06,420: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:30:09,678: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2024-02-06 20:30:10,001: INFO: builder_impl: Assets written to: /tmp/tmphumvqrtg/model/data/model/assets]
+[2024-02-06 20:31:52,087: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:32:37,631: INFO: main: Welcom to our custom log]
+[2024-02-06 20:32:37,631: INFO: main: >>>>>> stage Data Ingestion stage started <<<<<<]
+[2024-02-06 20:32:37,633: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:32:37,633: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:32:37,634: INFO: common: created directory at: artifacts]
+[2024-02-06 20:32:37,634: INFO: common: created directory at: artifacts/data_ingestion]
+[2024-02-06 20:32:37,634: INFO: data_ingestion: Downloading data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:33:29,140: INFO: data_ingestion: Downloaded data from https://drive.google.com/file/d/1vlhZ5c7abUKF8xXERIw6m9Te8fW7ohw3/view?usp=sharing into file artifacts/data_ingestion/data.zip]
+[2024-02-06 20:33:29,431: INFO: main: >>>>>> stage Data Ingestion stage completed <<<<<<
+
+x==========x]
+[2024-02-06 20:33:29,431: INFO: main: *******************]
+[2024-02-06 20:33:29,431: INFO: main: >>>>>> stage Prepare base model started <<<<<<]
+[2024-02-06 20:33:29,432: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:33:29,433: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:33:29,433: INFO: common: created directory at: artifacts]
+[2024-02-06 20:33:29,434: INFO: common: created directory at: artifacts/prepare_base_model]
+[2024-02-06 20:33:29,694: WARNING: saving_utils: Compiled the loaded model, but the compiled metrics have yet to be built. `model.compile_metrics` will be empty until you train or evaluate the model.]
+[2024-02-06 20:33:29,893: INFO: main: >>>>>> stage Prepare base model completed <<<<<<
+
+x==========x]
+[2024-02-06 20:33:29,894: INFO: main: *******************]
+[2024-02-06 20:33:29,894: INFO: main: >>>>>> stage training started <<<<<<]
+[2024-02-06 20:33:29,895: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:33:29,896: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:33:29,896: INFO: common: created directory at: artifacts]
+[2024-02-06 20:33:29,896: INFO: common: created directory at: artifacts/training]
+[2024-02-06 20:35:06,182: INFO: main: >>>>>> stage training completed <<<<<<
+
+x==========x]
+[2024-02-06 20:35:06,183: INFO: main: *******************]
+[2024-02-06 20:35:06,183: INFO: main: >>>>>> stage Evaluation stage started <<<<<<]
+[2024-02-06 20:35:06,184: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-02-06 20:35:06,185: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-02-06 20:35:06,185: INFO: common: created directory at: artifacts]
+[2024-02-06 20:35:16,986: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:35:16,988: INFO: common: json file saved at: scores.json]
+[2024-02-06 20:35:20,334: WARNING: save: Found untraced functions such as _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op, _jit_compiled_convolution_op while saving (showing 5 of 14). These functions will not be directly callable after loading.]
+[2024-02-06 20:35:20,687: INFO: builder_impl: Assets written to: /tmp/tmpfvertkz6/model/data/model/assets]
+[2024-02-06 20:37:02,977: INFO: main: >>>>>> stage Evaluation stage completed <<<<<<
+
+x==========x]

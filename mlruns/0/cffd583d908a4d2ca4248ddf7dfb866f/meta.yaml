@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/cffd583d908a4d2ca4248ddf7dfb866f/artifacts
+end_time: 1707224893583
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: cffd583d908a4d2ca4248ddf7dfb866f
+run_name: exultant-perch-461
+run_uuid: cffd583d908a4d2ca4248ddf7dfb866f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707224888975
+status: 4
+tags: []
+user_id: fintechsys

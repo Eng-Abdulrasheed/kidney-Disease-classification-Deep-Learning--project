@@ -1,0 +1,15 @@
+artifact_uri: mlflow-artifacts:/0/2516e42232eb4e42826b01b69149ee6e/artifacts
+end_time: 1707222065042
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2516e42232eb4e42826b01b69149ee6e
+run_name: awesome-penguin-940
+run_uuid: 2516e42232eb4e42826b01b69149ee6e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1707222059138
+status: 4
+tags: []
+user_id: fintechsys
