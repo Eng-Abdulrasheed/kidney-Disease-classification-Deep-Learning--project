@@ -20,3 +20,5 @@ COPY . .
 
 # Set the command to run the application
 CMD ["python3", "app.py"]
+
+# Set the working directory
