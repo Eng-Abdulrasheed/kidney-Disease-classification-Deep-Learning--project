@@ -1,12 +1,14 @@
 stages:
-  data_ingestion:
-    cmd: python src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+  data_preprocessing:
+    cmd: python src/cnnClassifier/pipeline/stage_05_data_preprocessing.py
     deps:
-      - src/cnnClassifier/pipeline/stage_01_data_ingestion.py
+      - src/cnnClassifier/pipeline/stage_05_data_preprocessing.py
       - config/config.yaml
+      - artifacts/data_ingestion/Norpeat liveness dataset/real
+      - artifacts/data_ingestion/Norpeat liveness dataset/fake
     outs:
-      - artifacts/data_ingestion/Norpeat liveness dataset
-
+      - artifacts/data_preprocessing/real
+      - artifacts/data_preprocessing/fake
 
   prepare_base_model:
     cmd: python src/cnnClassifier/pipeline/stage_02_prepare_base_model.py
@@ -28,7 +30,7 @@ stages:
     deps:
       - src/cnnClassifier/pipeline/stage_03_model_training.py
       - config/config.yaml
-      - artifacts/data_ingestion/Norpeat liveness dataset
+      - artifacts/data_preprocessing
       - artifacts/prepare_base_model
     params:
       - IMAGE_SIZE
@@ -36,7 +38,7 @@ stages:
       - BATCH_SIZE
       - AUGMENTATION
     outs:
-      - artifacts/training/model.h5
+      - artifacts/training/best_model.h5
 
 
   evaluation:
@@ -44,8 +46,8 @@ stages:
     deps:
       - src/cnnClassifier/pipeline/stage_04_model_evaluation.py
       - config/config.yaml
-      - artifacts/data_ingestion/Norpeat liveness dataset
-      - artifacts/training/model.h5
+      - artifacts/data_preprocessing
+      - artifacts/training/best_model.h5
     params:
       - IMAGE_SIZE
       - BATCH_SIZE

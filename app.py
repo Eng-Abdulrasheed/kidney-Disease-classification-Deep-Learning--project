@@ -25,8 +25,6 @@ def home():
     return render_template('index.html')
 
 
-
-
 @app.route("/train", methods=['GET','POST'])
 @cross_origin()
 def trainRoute():
@@ -48,5 +46,5 @@ def predictRoute():
 if __name__ == "__main__":
     clApp = ClientApp()
 
-    app.run(host='0.0.0.0', port=5000) #for AWS
+    app.run(host='0.0.0.0', port=8000) #for AWS
 

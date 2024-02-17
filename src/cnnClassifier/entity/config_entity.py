@@ -9,6 +9,15 @@ class DataIngestionConfig:
     local_data_file: Path
     unzip_dir: Path
     
+@dataclass(frozen=True)    
+class DataPreprocessingConfig:
+    root_dir: Path
+    unzip_dir_real: Path
+    unzip_dir_fake: Path
+    real_process_imgs: Path
+    fake_process_imgs: Path
+    
+    
 @dataclass(frozen=True)
 class PrepareBaseModelConfig:
     root_dir: Path

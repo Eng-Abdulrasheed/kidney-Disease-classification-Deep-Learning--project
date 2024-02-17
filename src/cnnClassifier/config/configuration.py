@@ -2,7 +2,7 @@ from cnnClassifier.constants import *
 import os
 from cnnClassifier.utils.common import read_yaml, create_directories, save_json
 from cnnClassifier.entity.config_entity import (DataIngestionConfig,
-                                                PrepareBaseModelConfig,TrainingConfig, EvaluationConfig)
+                                                PrepareBaseModelConfig,TrainingConfig, EvaluationConfig, DataPreprocessingConfig)
 
 
 class ConfigurationManager:
@@ -31,6 +31,20 @@ class ConfigurationManager:
         )
 
         return data_ingestion_config
+    def get_preprocess_data(self) -> DataPreprocessingConfig:
+        config = self.config.data_preprocessing
+        create_directories([config.root_dir])
+        create_directories([config.real_process_imgs])
+        create_directories([config.fake_process_imgs])
+        data_preprocessing_config = DataPreprocessingConfig(
+            root_dir=config.root_dir,
+            unzip_dir_real=config.unzip_dir_real,
+            unzip_dir_fake=config.unzip_dir_fake,
+            real_process_imgs=config.real_process_imgs,
+            fake_process_imgs = config.fake_process_imgs
+        )
+        return data_preprocessing_config
+        
     
     def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
             
@@ -55,7 +69,8 @@ class ConfigurationManager:
         training = self.config.training
         prepare_base_model = self.config.prepare_base_model
         params = self.params
-        training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Norpeat liveness dataset")
+        # training_data = os.path.join(self.config.data_ingestion.unzip_dir, "Norpeat liveness dataset")
+        training_data = self.config.data_preprocessing.root_dir
         create_directories([
             Path(training.root_dir)
         ])
@@ -77,7 +92,7 @@ class ConfigurationManager:
     def get_evaluation_config(self) -> EvaluationConfig:
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
-            training_data="artifacts/data_ingestion/Norpeat liveness dataset",
+            training_data="artifacts/data_preprocessing",
             mlflow_uri="https://dagshub.com/eacomunication2014/kidney-Disease-classification-Deep-Learning--project.mlflow",
             all_params=self.params,
             params_image_size=self.params.IMAGE_SIZE,

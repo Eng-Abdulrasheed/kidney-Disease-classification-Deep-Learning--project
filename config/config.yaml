@@ -3,10 +3,18 @@ artifacts_root: artifacts
 
 data_ingestion:
   root_dir: artifacts/data_ingestion
-  source_URL: https://drive.google.com/file/d/1kbJ_Kpp2TqVVXzoy-Ju_QNFJ5tpt6FAu/view?usp=sharing
+  source_URL: https://drive.google.com/file/d/1CFpSm2eOqg40RRehMeeowFf_DQCDqlT-/view?usp=sharing
   local_data_file: artifacts/data_ingestion/data.zip
   unzip_dir: artifacts/data_ingestion
-
+  real_process_imgs: artifacts/data_ingestion/real
+  fack_process_imgs: artifacts/data_ingestion/fack
+  
+data_preprocessing:
+  root_dir: artifacts/data_preprocessing
+  unzip_dir_real: artifacts/data_ingestion/Norpeat liveness dataset/real
+  unzip_dir_fake: artifacts/data_ingestion/Norpeat liveness dataset/fake
+  real_process_imgs: artifacts/data_preprocessing/real
+  fake_process_imgs: artifacts/data_preprocessing/fake
 
 prepare_base_model:
   root_dir: artifacts/prepare_base_model
@@ -18,4 +26,4 @@ prepare_base_model:
 
 training:
   root_dir: artifacts/training
-  trained_model_path: artifacts/training/model.h5
+  trained_model_path: artifacts/training/best_model.h5

@@ -1,5 +1,7 @@
 tensorflow==2.12.0
+opencv-python-headless
 pandas 
+dlib
 dvc
 mlflow==2.2.2
 notebook
