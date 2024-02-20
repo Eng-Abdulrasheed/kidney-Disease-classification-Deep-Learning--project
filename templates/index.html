@@ -8,15 +8,31 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
         body { background-color: #eff2f9; }
-        .img-part, .image-part { height: 300px; width: 300px; margin: auto; }
-        .image-part { border: 1px solid #1b2d6b; position: relative; }
-        .image-part video, .image-part img { height: 300px; width: 300px; }
-        .btn-part { margin-top: 20px; }
+        .img-part, .image-part { max-height: 90vh; max-width: 90vw; margin: auto; }
+        .image-part { border: 1px solid #1b2d6b; position: relative; overflow: hidden; }
+        .image-part video, .image-part img, #canvas {
+            max-height: 100%; 
+            max-width: 100%;
+            transform: scaleX(-1); /* Mirrors the video and canvas horizontally */
+        }
+        .btn-part { margin-top: 20px; text-align: center; }
         #canvas { display: none; }
         #loading { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 9999; }
-        .loader { border: 8px solid #f3f3f3; border-radius: 50%; border-top: 8px solid #3498db; width: 60px; height: 60px; animation: spin 2s linear infinite; position: absolute; left: 50%; top: 50%; margin-left: -30px; margin-top: -30px; }
+        .loader { 
+            border: 8px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 8px solid #3498db; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 2s linear infinite; 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+        }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
+    
 </head>
 <body>
     <div class="main container">
@@ -28,7 +44,7 @@
                         <video id="video" autoplay playsinline></video>
                         <canvas id="canvas"></canvas>
                     </div>
-                    <div class="btn-part text-center">
+                    <div class="btn-part">
                         <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
                     </div>
                 </div>
@@ -53,10 +69,16 @@
         var context = canvas.getContext('2d');
         var captureButton = document.getElementById('capture');
 
+        function adjustVideoCanvasSize() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        }
+
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
             .then(function(stream) {
                 video.srcObject = stream;
+                video.onloadedmetadata = adjustVideoCanvasSize; // Adjust size after video starts playing
             })
             .catch(function(err) {
                 console.log("An error occurred: " + err);
@@ -64,14 +86,14 @@
         }
 
         captureButton.addEventListener('click', function() {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+
+            adjustVideoCanvasSize(); // Ensure canvas size is correct at the moment of capture
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
             
             $("#loading").show();
             $.ajax({
-                url: "../predict", // Update this URL to your prediction API endpoint
+                url: "../predict", // Ensure this URL matches your server's endpoint
                 type: "POST",
                 data: JSON.stringify({ image: base64data }),
                 contentType: "application/json; charset=utf-8",
@@ -85,97 +107,7 @@
                     $("#loading").hide();
                 }
             });
-        });
-    </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Camera Image Capture</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <style>
-        body { background-color: #eff2f9; }
-        .img-part, .image-part { height: 300px; width: 300px; margin: auto; }
-        .image-part { border: 1px solid #1b2d6b; position: relative; }
-        .image-part video, .image-part img { height: 300px; width: 300px; }
-        .btn-part { margin-top: 20px; }
-        #canvas { display: none; }
-        #loading { display: none; position: fixed; left: 0; top: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.7); z-index: 9999; }
-        .loader { border: 8px solid #f3f3f3; border-radius: 50%; border-top: 8px solid #3498db; width: 60px; height: 60px; animation: spin 2s linear infinite; position: absolute; left: 50%; top: 50%; margin-left: -30px; margin-top: -30px; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-    </style>
-</head>
-<body>
-    <div class="main container">
-        <section class="iupload">
-            <h3 class="text-center py-4">Object Classification via Webcam</h3>
-            <div class="row">
-                <div class="img-part col-md-6">
-                    <div class="image-part">
-                        <video id="video" autoplay playsinline></video>
-                        <canvas id="canvas"></canvas>
-                    </div>
-                    <div class="btn-part text-center">
-                        <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
-                    </div>
-                </div>
-                <div class="col-md-6 col-xs-12">
-                    <h5 class="mb-2 text-center">Prediction Results</h5>
-                    <div class="res-part" style="border:1px solid #dedede; height: 310px; overflow:auto;">
-                        <div class="jsonRes" style="margin-left:30px;"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-    <div id="loading"><div class="loader"></div></div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-    <script>
-        var video = document.getElementById('video');
-        var canvas = document.getElementById('canvas');
-        var context = canvas.getContext('2d');
-        var captureButton = document.getElementById('capture');
-
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function(stream) {
-                video.srcObject = stream;
-            })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
-            });
-        }
-
-        captureButton.addEventListener('click', function() {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
-            
-            $("#loading").show();
-            $.ajax({
-                url: "../predict", // Update this URL to your prediction API endpoint
-                type: "POST",
-                data: JSON.stringify({ image: base64data }),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: function(response) {
-                    $(".jsonRes").html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
-                    $("#loading").hide();
-                },
-                error: function(err) {
-                    console.error("Error in sending/receiving data.", err);
-                    $("#loading").hide();
-                }
-            });
         });
     </script>
 </body>

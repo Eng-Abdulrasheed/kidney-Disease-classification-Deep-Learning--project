@@ -51,7 +51,7 @@ class PredictionPipeline:
         return processed_image
     def predict(self):
             # load model
-            model = load_model(os.path.join("artifacts","training", "best_model.h5"))
+            model = load_model(os.path.join("artifacts","training", "best_model_v2.h5"))
 
             imagename = self.filename
             test_image = image.load_img(imagename, target_size = (512,512))
@@ -60,14 +60,14 @@ class PredictionPipeline:
                 print("Preprocessing failed; no prediction made")
                 return None
             test_image = image.img_to_array(test_image)
-            test_image = cv2.resize(test_image, (512, 512))
+            test_image = cv2.resize(test_image, (224, 224))
             test_image = test_image / 255.0
             test_image = np.expand_dims(test_image, axis = 0)
             prpability = model.predict(test_image)
             # result = np.argmax(model.predict(test_image), axis=0)
             # print(result)
 
-            if prpability >= 0.9:
+            if prpability >= 0.98:
                 prediction = 'Real'
                 return [{ "image" : str(prpability),"Statue": prediction}]
             else:
