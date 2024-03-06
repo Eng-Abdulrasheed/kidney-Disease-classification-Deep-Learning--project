@@ -15,8 +15,7 @@ class PredictionPipeline:
         self.data_preprocessor = DataPreprocessing(self.data_preprocessing_config)
         self.data_preprocessor = DataPreprocessing(self.data_preprocessing_config)
         self.faceDetector = dlib.get_frontal_face_detector()
-
-
+        
     def preprocess_image(self, test_image):
         test_image_array = np.array(test_image)
         faces = self.faceDetector(test_image_array, 0)
@@ -64,12 +63,11 @@ class PredictionPipeline:
             test_image = test_image / 255.0
             test_image = np.expand_dims(test_image, axis = 0)
             prpability = model.predict(test_image)
-            # result = np.argmax(model.predict(test_image), axis=0)
-            # print(result)
-
-            if prpability >= 0.98:
-                prediction = 'Real'
-                return [{ "image" : str(prpability),"Statue": prediction}]
-            else:
-                prediction = 'fake'
-                return [{ "image" : str(prpability), "Statue": prediction}]
+            return prpability
+            
+            # if prpability >= 0.75:
+            #     prediction = 'Real'
+            #     return [{ "image" : str(prpability),"Statue": prediction}]
+            # else:
+            #     prediction = 'fake'
+            #     return [{ "image" : str(prpability), "Statue": prediction}]

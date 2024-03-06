@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@mediapipe/tasks-vision": "^0.10.10",
+    "@mjyc/opencv.js": "^1.0.0"
+  }
+}

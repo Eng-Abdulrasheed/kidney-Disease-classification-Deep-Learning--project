@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Web Camera Continuous Face Tracking</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+    <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+   
+    <script type="text/javascript">
+        function onOpenCvReady() {
+            console.log('OpenCV.js is ready.');
+            console.log(cv)
+            // You can start using OpenCV.js functions here
+        }
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .main {
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            text-align: center;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 800px;
+        }
+
+        .image-part {
+            position: relative;
+            margin: auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        #video, #canvas {
+            position: absolute;
+            transform: scaleX(-1);
+        }
+
+        #video {
+            height: 100%;
+        }
+
+        .powered-by {
+            font-family: Arial, sans-serif;
+            color: #aaa;
+            position: absolute;
+            bottom: 20px;
+            left: center;
+            font-size: 0.75em;
+        }
+
+        .btn-part { margin-top: 20px; text-align: center; }
+        .iupload {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-part::before {
+            position: relative;
+            margin: auto;
+            width: 100vw; /* Fill the entire viewport width */
+            height: 100vh; /* Fill the entire viewport height */
+            border-radius: 50%; /* Circular frame */
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        #loading { 
+            display: none; 
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(255,255,255,0.7); 
+            z-index: 9999; 
+        }
+        .loader { 
+            border: 8px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 8px solid #3498db; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 2s linear infinite; 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        .notation {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: purple;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none; /* Hide until the video stream starts */
+        }
+
+
+        .erate {
+            position: absolute;
+            height: 27px;
+            width: 90px;
+            background: #ff0606;
+            z-index: 1000;
+            border-radius: 50px;
+          }
+     
+    </style>
+</head>
+<body>
+    <div class="main container">
+        <div class="row">
+            <div class="col-12 col-6">
+                <section class="iupload">
+                    <h3>Web Camera Image Capture</h3>
+                    <div class="image-part">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas"></canvas>
+                        
+                        <div class="powered-by">Powered by Fintechsys</div>
+                        <div id="erate" class="erate"></div>
+                        
+                    </div>
+                    <div class="btn-part">
+                        <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
+                        
+                        
+                    </div>
+                    <h5>Prediction Results</h5>
+                    <div class="res-part" style="border:1px solid #dedede; height: 310px; overflow:auto;">
+                        <div class="jsonRes"></div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+    <div id="loading"><div class="loader"></div></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
+    <script>
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+        const faceMesh = new FaceMesh({
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+        });
+        faceMesh.setOptions({
+            maxNumFaces: 1,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5,
+        });    
+        // Define an array of style configurations
+        var styles = [
+            { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
+            { right: '-30px', transform: 'rotate(-90deg)', left: '', top: '', bottom: '' }, // Style Two
+            { bottom: '0', transform: 'rotate(0deg)', left: '', top: '', right: '' }, // Style Three
+            { top: '0', transform: 'rotate(0deg)', left: '', bottom: '', right: '' }, // Style Four
+            { top: '6%', right: '0', transform: 'rotate(40deg)', left: '', bottom: '' }, // Style Five
+            { top: '6%', left: '0', transform: 'rotate(-40deg)', right: '', bottom: '' }, // Style Six
+            { bottom: '6%', left: '0', transform: 'rotate(40deg)', right: '', top: '' }, // Style Seven
+            { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
+        ];
+    
+        let images = [];
+        let captureIndex = 0;
+    
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+    
+        function applyStyle(style) {
+            const erateElement = document.querySelector('.erate');
+            erateElement.style.left = style.left;
+            erateElement.style.right = style.right;
+            erateElement.style.top = style.top;
+            erateElement.style.bottom = style.bottom;
+            erateElement.style.transform = style.transform;
+        }
+    
+        function captureImage() {
+            adjustVideoCanvasSize();
+            context.drawImage(video, 0, 0, canvas.width, canvas.height); 
+            var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
+            images.push(base64data);
+    
+            if (images.length === 8) {
+                sendImagesForPrediction(images);
+                images = []; // Reset the images array for next time
+                captureIndex = 0; // Reset capture index
+                // Stop the sequence, no need to explicitly stop as it will not continue automatically
+            } else {
+                setTimeout(() => {
+                    // Proceed to the next capture after a delay
+                    rotateAndCapture();
+                }, 1000); // 6 seconds for each capture cycle
+            }
+        }
+    
+        function rotateAndCapture() {
+            if (captureIndex < styles.length) {
+                applyStyle(styles[captureIndex]);
+                captureIndex++;
+                setTimeout(captureImage, 1000); // Wait 3 seconds before capturing
+            }
+        }
+    
+        captureButton.addEventListener('click', function() {
+            if (images.length === 0) {
+                shuffleArray(styles);
+                rotateAndCapture();
+            }
+        });
+    
+        function sendImagesForPrediction(images) {
+            $("#loading").show();
+            $.ajax({
+                url: "/predict", // Ensure this URL matches your server's endpoint
+                type: "POST",
+                data: JSON.stringify({ images: images }), // Sending array of images
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $("#loading").hide();
+                    images = []; // Reset images for the next operation
+        
+                    if(response.average_prediction > 0.5) {
+                        // Success case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-success" role="alert">
+                                Verified! Successfully verified as a live person.
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
+                        `;
+                        document.getElementById('start-over').addEventListener('click', function() {
+                            location.reload(); // Reload the page to start over
+                        });
+                    } else {
+                        // Failure case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-danger" role="alert">
+                                Not verified. Please try again.
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`
+                            ;
+        
+                        document.getElementById('start-over').addEventListener('click', function() {
+                            location.reload(); // Reload the page to start over
+                        });
+                    }
+                },
+                error: function(err) {
+                    console.error("Error in sending/receiving data.", err);
+                    $("#loading").hide();
+                }
+            });
+        }        
+    
+        function adjustVideoCanvasSize() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        }
+        // Your existing mediaDevices and FaceMesh setup here
+        // No changes needed for those parts
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
+            .then(function(stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = adjustVideoCanvasSize; // Adjust size after video starts playing
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+        }
+    
+        captureButton.addEventListener('click', function() {
+    
+            adjustVideoCanvasSize(); // Ensure canvas size is correct at the moment of capture
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
+            
+            $("#loading").show();
+            $.ajax({
+                url: "../predict", // Ensure this URL matches your server's endpoint
+                type: "POST",
+                data: JSON.stringify({ image: base64data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $("#loading").hide();
+                },
+                error: function(err) {
+                    console.error("Error in sending/receiving data.", err);
+                    $("#loading").hide();
+                }
+            });
+    
+        });
+            function onResults(results) {
+                context.save();
+                context.clearRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+                if (results.multiFaceLandmarks) {
+                    for (const landmarks of results.multiFaceLandmarks) {
+                        drawConnectors(context, landmarks, FACEMESH_TESSELATION, {color: '#C0C0C070', lineWidth: 1});
+                    }
+                }
+                context.restore();
+            }
+    
+            
+            faceMesh.onResults(onResults);
+    
+            function onFrame() {
+                faceMesh.send({image: video}).finally(() => {
+                    window.requestAnimationFrame(onFrame);
+                });
+            }
+    
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then((stream) => {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = (e) => {
+                        video.play();
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        onFrame(); // Start the frame processing loop
+                    };
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Could not access the camera. Error: " + error.name);
+                });
+               
+    </script>
+    
+</body>
+</html>
