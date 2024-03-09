@@ -9,6 +9,15 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+    <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
+   
+    <script type="text/javascript">
+        function onOpenCvReady() {
+            console.log('OpenCV.js is ready.');
+            console.log(cv)
+            // You can start using OpenCV.js functions here
+        }
+    </script>
     <style>
         body {
             margin: 0;
@@ -151,7 +160,7 @@
                     </div>
                     <div class="btn-part">
                         <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
-                        <button id="rotateButton" type="button" class="btn btn-primary">Go Around</button>
+                        
                         
                     </div>
                     <h5>Prediction Results</h5>
@@ -165,58 +174,36 @@
     <div id="loading"><div class="loader"></div></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
     <script>
-        // Your existing JavaScript here
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
-        var captureButton = document.getElementById('capture');
-
-        // Function to shuffle the styles array
+        const captureButton = document.getElementById('capture');
+    
+        // Define an array of style configurations
+        var styles = [
+            { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
+            { right: '-30px', transform: 'rotate(-90deg)', left: '', top: '', bottom: '' }, // Style Two
+            { bottom: '0', transform: 'rotate(0deg)', left: '', top: '', right: '' }, // Style Three
+            { top: '0', transform: 'rotate(0deg)', left: '', bottom: '', right: '' }, // Style Four
+            { top: '6%', right: '0', transform: 'rotate(40deg)', left: '', bottom: '' }, // Style Five
+            { top: '6%', left: '0', transform: 'rotate(-40deg)', right: '', bottom: '' }, // Style Six
+            { bottom: '6%', left: '0', transform: 'rotate(40deg)', right: '', top: '' }, // Style Seven
+            { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
+        ];
+    
+        let images = [];
+        let captureIndex = 0;
+    
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
-         // Define an array of style configurations
-         var styles = [
-         { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
-         { right: '-30px', transform: 'rotate(-90deg)', left: '', top: '', bottom: '' }, // Style Two
-         { bottom: '0', transform: 'rotate(0deg)', left: '', top: '', right: '' }, // Style Three
-         { top: '0', transform: 'rotate(0deg)', left: '', bottom: '', right: '' }, // Style Four
-         { top: '6%', right: '0', transform: 'rotate(40deg)', left: '', bottom: '' }, // Style Five
-         { top: '6%', left: '0', transform: 'rotate(-40deg)', right: '', bottom: '' }, // Style Six
-         { bottom: '6%', left: '0', transform: 'rotate(40deg)', right: '', top: '' }, // Style Seven
-         { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
-         ];
- 
-
-
-         function autoRotate() {
-            shuffleArray(styles); // Shuffle the styles to start in random order
-            let index = 0; // Start with the first style in the shuffled array
-        
-            const rotateAndCapture = () => {
-                if(index >= styles.length) {
-                    index = 0; // Reset the index to loop through the styles again
-                    shuffleArray(styles); // Optional: Shuffle the styles again for randomness
-                }
-                applyStyle(styles[index]); // Apply the next style
-                index++; // Move to the next style
-        
-                setTimeout(() => {
-                    captureImage(); // Capture the image 3 seconds after applying the style
-                }, 3000); // Wait 3 seconds before capturing the image
-            };
-        
-            setInterval(rotateAndCapture, 6000); // Change the style every 6 seconds (3 seconds to show the style + 3 seconds delay for capture)
-        }
-        // Your existing script with modifications for automated capture
-
-        // Adjust the applyStyle function to include the capture logic
+    
         function applyStyle(style) {
             const erateElement = document.querySelector('.erate');
             erateElement.style.left = style.left;
@@ -225,55 +212,99 @@
             erateElement.style.bottom = style.bottom;
             erateElement.style.transform = style.transform;
         }
-
-        // Initialize an array to store images
-        // Initialize an array to store images
-        let images = [];
-
+    
         function captureImage() {
-            adjustVideoCanvasSize(); // Ensure canvas size is correct
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            adjustVideoCanvasSize();
+            context.drawImage(video, 0, 0, canvas.width, canvas.height); 
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
-            images.push(base64data); // Add image to array
-
-            if (images.length === 8) { // Check if we have collected all 8 images
-                sendImagesForPrediction(images); // Send images for prediction
-                images = []; // Reset the array for next batch
+            images.push(base64data);
+    
+            if (images.length === 8) {
+                sendImagesForPrediction(images);
+                images = []; // Reset the images array for next time
+                captureIndex = 0; // Reset capture index
+                // Stop the sequence, no need to explicitly stop as it will not continue automatically
+            } else {
+                setTimeout(() => {
+                    // Proceed to the next capture after a delay
+                    rotateAndCapture();
+                }, 1000); // 6 seconds for each capture cycle
             }
         }
-
+    
+        function rotateAndCapture() {
+            if (captureIndex < styles.length) {
+                applyStyle(styles[captureIndex]);
+                captureIndex++;
+                setTimeout(captureImage, 1000); // Wait 3 seconds before capturing
+            }
+        }
+    
+        captureButton.addEventListener('click', function() {
+            if (images.length === 0) {
+                shuffleArray(styles);
+                rotateAndCapture();
+            }
+        });
+    
         function sendImagesForPrediction(images) {
             $("#loading").show();
             $.ajax({
-                url: "../predict_batch", // A new endpoint for batch processing
+                url: "/predict", // Ensure this URL matches your server's endpoint
                 type: "POST",
-                data: JSON.stringify({ images: images }), // Send array of images
+                data: JSON.stringify({ images: images }), // Sending array of images
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    $(".jsonRes").html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
                     $("#loading").hide();
+                    images = []; // Reset images for the next operation
+        
+                    let directionsMessage = "";
+                    if (response.directions && response.directions.length > 0) {
+                        // Process each direction with its angles
+                        directionsMessage = response.directions.map((item, index) => {
+                            const direction = item.direction;
+                            const angles = item.angles;
+                            return `<li>Image ${index + 1}: ${direction} (x: ${angles.x.toFixed(2)}, y: ${angles.y.toFixed(2)}, z: ${angles.z.toFixed(2)})</li>`;
+                        }).join('');
+                        directionsMessage = `<ul>${directionsMessage}</ul>`;
+                    }
+        
+                    if(response.average_prediction > 0.5) {
+                        // Success case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-success" role="alert">
+                                Verified! Successfully verified as a live person. ${directionsMessage}
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
+                        `;
+                    } else {
+                        // Failure case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-danger" role="alert">
+                                Not verified. Please try again. ${directionsMessage}
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`;
+                    }
+        
+                    document.getElementById('start-over').addEventListener('click', function() {
+                        location.reload(); // Reload the page to start over
+                    });
                 },
                 error: function(err) {
                     console.error("Error in sending/receiving data.", err);
                     $("#loading").hide();
                 }
             });
-        }
-
-
-        // Remove the manual capture button event listener since captures are now automated
-        // captureButton.removeEventListener('click', captureAndPredict);
-
-        $(document).ready(() => {
-            autoRotate(); // Start the automatic rotation when the document is ready
-        });
-
- 
+        }        
+              
+    
         function adjustVideoCanvasSize() {
             canvas.width = video.videoWidth;
             canvas.height = video.videoHeight;
         }
+        // Your existing mediaDevices and FaceMesh setup here
+        // No changes needed for those parts
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
             .then(function(stream) {
@@ -299,7 +330,6 @@
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
-                    $(".jsonRes").html("<pre>" + JSON.stringify(response, null, 2) + "</pre>");
                     $("#loading").hide();
                 },
                 error: function(err) {
@@ -351,6 +381,8 @@
                     console.error(error);
                     alert("Could not access the camera. Error: " + error.name);
                 });
+               
     </script>
+    
 </body>
 </html>

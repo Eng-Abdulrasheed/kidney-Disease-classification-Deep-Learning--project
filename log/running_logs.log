@@ -15584,3 +15584,677 @@ jinja2.exceptions.TemplateSyntaxError: Encountered unknown tag 'comment'.
 [2024-03-05 10:57:03,701: INFO: _internal: [33mPress CTRL+C to quit[0m]
 [2024-03-05 10:57:05,605: INFO: _internal: 127.0.0.1 - - [05/Mar/2024 10:57:05] "GET / HTTP/1.1" 200 -]
 [2024-03-05 10:57:12,574: INFO: _internal: 127.0.0.1 - - [05/Mar/2024 10:57:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 10:51:36,719: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 10:51:36,721: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 10:51:36,721: INFO: common: created directory at: artifacts]
+[2024-03-06 10:51:36,721: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 10:51:36,721: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 10:51:36,721: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 10:51:37,037: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 10:51:37,038: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 10:51:39,165: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:51:39] "GET / HTTP/1.1" 200 -]
+[2024-03-06 10:51:43,839: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:51:43] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 10:52:10,562: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 10:52:10,563: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 10:52:10,563: INFO: common: created directory at: artifacts]
+[2024-03-06 10:52:10,563: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 10:52:10,563: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 10:52:10,563: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 10:52:10,820: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 10:52:10,820: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 10:52:13,863: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:52:13] "GET / HTTP/1.1" 200 -]
+[2024-03-06 10:53:06,155: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 10:53:06,156: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 10:53:06,156: INFO: common: created directory at: artifacts]
+[2024-03-06 10:53:06,156: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 10:53:06,156: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 10:53:06,156: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 10:53:06,416: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 10:53:06,416: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 10:53:07,812: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:53:07] "GET / HTTP/1.1" 200 -]
+[2024-03-06 10:56:24,189: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 10:56:24,190: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 10:56:24,191: INFO: common: created directory at: artifacts]
+[2024-03-06 10:56:24,191: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 10:56:24,191: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 10:56:24,191: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 10:56:24,513: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 10:56:24,513: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 10:56:26,362: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:56:26] "GET / HTTP/1.1" 200 -]
+[2024-03-06 10:56:54,194: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 10:56:54,195: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 10:56:54,195: INFO: common: created directory at: artifacts]
+[2024-03-06 10:56:54,195: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 10:56:54,195: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 10:56:54,195: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 10:56:54,494: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 10:56:54,494: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 10:56:55,740: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:56:55] "GET / HTTP/1.1" 200 -]
+[2024-03-06 10:57:01,045: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:57:01] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 10:57:21,521: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fa1442390d0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 10:57:21,862: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 10:57:21] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:03:08,856: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:03:08,857: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:03:08,857: INFO: common: created directory at: artifacts]
+[2024-03-06 11:03:08,857: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:03:08,858: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:03:08,858: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:03:09,206: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:03:09,206: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:03:12,131: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:03:12] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:03:14,893: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:03:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:03:17,068: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:03:17] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:03:37,380: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:03:37] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:04:02,709: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:04:02] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:04:04,668: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:04:04] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:04:20,886: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f4cac285160> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 11:04:21,815: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f4cac2260d0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 11:04:26,252: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:04:26] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:04:39,305: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:04:39] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:07:50,497: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:07:50,499: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:07:50,499: INFO: common: created directory at: artifacts]
+[2024-03-06 11:07:50,499: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:07:50,499: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:07:50,499: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:07:51,032: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:07:51,032: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:07:54,824: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:07:54] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:07:55,823: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:07:55] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:07:57,892: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:07:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:08:17,114: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:08:17] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:08:28,770: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:08:28] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:08:31,001: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:08:31] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:08:50,762: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:08:50] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:10:20,362: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:10:20,363: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:10:20,363: INFO: common: created directory at: artifacts]
+[2024-03-06 11:10:20,363: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:10:20,363: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:10:20,363: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:10:20,694: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:10:20,694: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:10:22,578: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:10:22] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:10:24,207: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:10:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:10:26,073: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:10:26] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:10:45,282: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:10:45] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:14:47,211: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:14:47,212: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:14:47,212: INFO: common: created directory at: artifacts]
+[2024-03-06 11:14:47,212: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:14:47,212: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:14:47,212: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:14:47,531: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:14:47,531: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:14:49,406: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:14:49] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:14:50,477: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:14:50] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:14:54,487: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:14:54] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:15:14,840: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:15:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:24:11,596: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:24:11,597: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:24:11,597: INFO: common: created directory at: artifacts]
+[2024-03-06 11:24:11,597: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:24:11,597: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:24:11,598: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:24:11,918: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:24:11,918: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:24:13,708: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:24:13] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:24:16,020: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:24:16] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:24:16,737: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:24:16] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:24:36,991: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:24:36] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:25:31,771: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:25:31] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:25:40,933: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:25:40] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:25:48,786: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:25:48] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:25:57,361: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fcc640eff70> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 11:25:58,266: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fcc640ef0d0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 11:26:02,846: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:26:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:26:04,834: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:26:04] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:27:08,175: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:27:08] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:27:28,522: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:27:28] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:27:57,585: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:27:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:28:19,692: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:28:19] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:28:32,205: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:28:32] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:28:54,304: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:28:54] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:29:02,090: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:29:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:29:24,908: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:29:24] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:30:50,357: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:30:50] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:31:12,612: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:31:12] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:32:20,641: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:32:20] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:32:24,558: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:32:24] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:32:43,139: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:32:43] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:41:08,245: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:41:08] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:41:37,974: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:41:37] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:41:57,185: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:41:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:50:47,962: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 11:50:47,964: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 11:50:47,964: INFO: common: created directory at: artifacts]
+[2024-03-06 11:50:47,964: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 11:50:47,964: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 11:50:47,964: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 11:50:48,882: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 11:50:48,882: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 11:51:11,932: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:51:11] "GET / HTTP/1.1" 200 -]
+[2024-03-06 11:51:15,324: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:51:15] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 11:51:19,707: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:51:19] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 11:51:39,114: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 11:51:39] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:39:54,402: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 16:39:54,403: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 16:39:54,404: INFO: common: created directory at: artifacts]
+[2024-03-06 16:39:54,404: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 16:39:54,404: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 16:39:54,404: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 16:39:54,694: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 16:39:54,694: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 16:39:57,080: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:39:57] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:39:58,726: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:39:58] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 16:40:03,101: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:40:03] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:40:23,776: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:40:23] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:41:48,029: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:41:48] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:41:55,188: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:41:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:42:12,622: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f4386fd0b80> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 16:42:13,999: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f4386fd0280> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 16:42:15,377: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:42:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:42:21,340: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:42:21] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:42:42,836: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:42:42] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:43:54,609: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:43:54] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:44:15,276: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:44:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:44:42,969: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:44:42] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:44:44,922: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:44:44] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:44:56,862: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:44:56] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:45:01,187: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:45:01] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:45:21,609: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:45:21] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:48:25,079: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 16:48:25,081: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 16:48:25,081: INFO: common: created directory at: artifacts]
+[2024-03-06 16:48:25,081: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 16:48:25,081: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 16:48:25,081: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 16:48:25,561: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 16:48:25,561: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 16:48:27,739: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:48:27] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:48:33,256: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:48:33] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:48:55,511: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7ff3ec32e310> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 16:48:55,514: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:48:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:51:57,005: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 16:51:57,007: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 16:51:57,007: INFO: common: created directory at: artifacts]
+[2024-03-06 16:51:57,007: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 16:51:57,007: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 16:51:57,007: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 16:51:57,539: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 16:51:57,539: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 16:52:00,111: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:52:00] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:52:03,165: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:52:03] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:52:22,426: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:52:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:52:56,092: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 16:52:56,094: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 16:52:56,094: INFO: common: created directory at: artifacts]
+[2024-03-06 16:52:56,094: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 16:52:56,094: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 16:52:56,094: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 16:52:56,577: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 16:52:56,577: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 16:53:00,733: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:53:00] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:53:05,091: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:53:05] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:53:25,582: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:53:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:53:57,514: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:53:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:53:59,533: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:53:59] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:54:01,352: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:54:01] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:54:19,587: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f77d45f6670> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 16:54:21,470: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f77d44e35e0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 16:54:21,836: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:54:21] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:55:09,128: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:09] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:55:10,683: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:10] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:55:32,520: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:32] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:55:47,480: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:47] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:55:47,792: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:47] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:55:50,005: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:50] "GET / HTTP/1.1" 200 -]
+[2024-03-06 16:55:52,395: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:55:52] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 16:56:12,545: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 16:56:12] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 17:09:45,956: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:09:45] "GET / HTTP/1.1" 200 -]
+[2024-03-06 17:10:13,710: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:10:13] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 17:10:33,431: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:10:33] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 17:11:18,899: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-06 17:11:18,900: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-06 17:11:18,900: INFO: common: created directory at: artifacts]
+[2024-03-06 17:11:18,900: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-06 17:11:18,900: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-06 17:11:18,901: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-06 17:11:19,457: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-06 17:11:19,457: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-06 17:11:25,834: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:11:25] "GET / HTTP/1.1" 200 -]
+[2024-03-06 17:11:26,977: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:11:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-06 17:11:36,968: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:11:36] "POST /predict HTTP/1.1" 200 -]
+[2024-03-06 17:11:58,183: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f5d78483160> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 17:11:59,041: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f5d7841e160> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-06 17:11:59,044: INFO: _internal: 127.0.0.1 - - [06/Mar/2024 17:11:59] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 09:42:04,801: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 09:42:04,803: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 09:42:04,803: INFO: common: created directory at: artifacts]
+[2024-03-07 09:42:04,803: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 09:42:04,803: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 09:42:04,803: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 09:42:05,115: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 09:42:05,115: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 09:42:10,717: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:42:10] "GET / HTTP/1.1" 200 -]
+[2024-03-07 09:42:12,455: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:42:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-07 09:42:18,002: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:42:18] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 09:42:37,089: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:42:37] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 09:47:10,937: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:47:10] "GET / HTTP/1.1" 200 -]
+[2024-03-07 09:47:17,219: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:47:17] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 09:47:35,460: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:47:35] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 09:49:51,016: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 09:49:51] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:32:26,661: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:32:26,663: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:32:26,663: INFO: common: created directory at: artifacts]
+[2024-03-07 10:32:26,663: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:32:26,663: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:32:26,663: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:32:27,077: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:32:27,077: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:32:29,185: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:32:29] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:32:49,836: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:32:49,837: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:32:49,837: INFO: common: created directory at: artifacts]
+[2024-03-07 10:32:49,837: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:32:49,837: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:32:49,837: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:32:50,228: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:32:50,228: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:32:51,858: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:32:51] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:39:01,182: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:39:01,183: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:39:01,184: INFO: common: created directory at: artifacts]
+[2024-03-07 10:39:01,184: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:39:01,184: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:39:01,185: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:39:01,583: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:39:01,583: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:39:03,576: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:39:03] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:39:10,658: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:39:10] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:39:25,129: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:39:25,130: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:39:25,131: INFO: common: created directory at: artifacts]
+[2024-03-07 10:39:25,131: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:39:25,131: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:39:25,131: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:39:25,560: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:39:25,560: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:39:27,108: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:39:27] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:39:35,925: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:39:35] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:39:54,860: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:39:54,862: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:39:54,862: INFO: common: created directory at: artifacts]
+[2024-03-07 10:39:54,862: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:39:54,862: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:39:54,862: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:39:55,273: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:39:55,273: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:39:56,868: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:39:56] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:40:01,703: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:40:01] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:40:22,492: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:40:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:53:58,991: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-07 10:53:58,992: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-07 10:53:58,993: INFO: common: created directory at: artifacts]
+[2024-03-07 10:53:58,993: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-07 10:53:58,993: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-07 10:53:58,993: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-07 10:53:59,341: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-07 10:53:59,341: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-07 10:54:02,289: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:54:02] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:54:09,975: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:54:09] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:54:16,884: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:54:16] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:54:22,647: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:54:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:54:43,095: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:54:43] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:55:14,656: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:55:14] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:55:30,721: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:55:30] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:55:53,478: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7efb74079160> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-07 10:55:55,120: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7efb74221700> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-07 10:55:55,124: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:55:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:55:59,427: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:55:59] "GET / HTTP/1.1" 200 -]
+[2024-03-07 10:56:06,788: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:56:06] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 10:56:33,563: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 10:56:33] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 11:15:06,949: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 11:15:06] "GET / HTTP/1.1" 200 -]
+[2024-03-07 11:15:22,807: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 11:15:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-07 11:15:43,419: INFO: _internal: 127.0.0.1 - - [07/Mar/2024 11:15:43] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:19:06,364: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-09 09:19:06,365: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-09 09:19:06,366: INFO: common: created directory at: artifacts]
+[2024-03-09 09:19:06,366: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-09 09:19:06,366: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-09 09:19:06,366: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-09 09:19:06,705: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-09 09:19:06,705: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-09 09:19:15,332: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:15] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:19:18,803: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-09 09:19:33,814: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:33] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:19:53,047: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:53] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:19:56,163: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:56] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:19:59,327: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:19:59] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:20:02,251: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:20:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:20:19,471: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f7bf4019790> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-09 09:20:20,670: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:20:20] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:20:35,672: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:20:35] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:21:03,127: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:21:03] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:21:21,319: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f7caea60430> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-09 09:21:21,321: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:21:21] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:21:59,135: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:21:59] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:22:14,006: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:22:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:22:32,847: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:22:32] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:23:20,900: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:23:20] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:23:25,595: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:23:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:23:44,100: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:23:44] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:30:19,606: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:30:19] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:30:27,665: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:30:27] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:30:46,631: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:30:46] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:31:19,546: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:31:19] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:31:25,925: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:31:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:31:30,127: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:31:30] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:31:38,320: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:31:38] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:31:56,892: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:31:56] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:32:00,017: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:32:00] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:41:55,215: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-09 09:41:55,216: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-09 09:41:55,216: INFO: common: created directory at: artifacts]
+[2024-03-09 09:41:55,216: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-09 09:41:55,217: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-09 09:41:55,217: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-09 09:41:55,544: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-09 09:41:55,544: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-09 09:41:59,501: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:41:59] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:42:01,968: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:42:01] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-09 09:42:04,941: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:42:04] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:42:23,714: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:42:23] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:42:39,715: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:42:39] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:42:57,536: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:42:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:43:02,101: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:02] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:43:09,032: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:09] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:43:26,982: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:26] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:43:32,624: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:32] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:43:38,254: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:38] "GET / HTTP/1.1" 200 -]
+[2024-03-09 09:43:42,186: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:42] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:43:59,956: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:43:59] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 09:44:04,158: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 09:44:04] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:39:17,681: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-09 10:39:17,682: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-09 10:39:17,682: INFO: common: created directory at: artifacts]
+[2024-03-09 10:39:17,682: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-09 10:39:17,682: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-09 10:39:17,683: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-09 10:39:17,996: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-09 10:39:17,996: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-09 10:39:34,431: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:39:34] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:39:35,841: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:39:35] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-09 10:39:50,679: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:39:50] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:42:26,582: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-09 10:42:26,583: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-09 10:42:26,584: INFO: common: created directory at: artifacts]
+[2024-03-09 10:42:26,584: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-09 10:42:26,584: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-09 10:42:26,584: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-09 10:42:26,887: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-09 10:42:26,887: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-09 10:42:30,547: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:42:30] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:42:31,450: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:42:31] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-09 10:42:35,580: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:42:35] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:42:55,125: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:42:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:43:08,039: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:08] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:43:12,844: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:12] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:43:16,242: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:16] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:43:33,195: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6316e56c10> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-09 10:43:34,553: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f6316f6fca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-09 10:43:34,869: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:43:47,181: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:47] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:43:49,484: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:43:49] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:44:05,967: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 113, in predictBatchRoute
+    result = clApp.classifier.predict()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 57, in predict
+    test_image = self.preprocess_image(test_image)
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 33, in preprocess_image
+    resized_face = cv2.resize(face_image_rgb, (512, 512))
+cv2.error: OpenCV(4.9.0) /io/opencv/modules/imgproc/src/resize.cpp:4152: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+
+[2024-03-09 10:44:05,969: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:05] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2024-03-09 10:44:10,062: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:10] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:44:16,133: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:16] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:44:34,302: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:44:37,050: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:37] "GET / HTTP/1.1" 200 -]
+[2024-03-09 10:44:40,852: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:40] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 10:44:59,445: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 10:44:59] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 11:07:33,874: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:07:33] "GET / HTTP/1.1" 200 -]
+[2024-03-09 11:07:36,599: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:07:36] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 11:07:55,498: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:07:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-09 11:59:37,607: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-09 11:59:37,608: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-09 11:59:37,608: INFO: common: created directory at: artifacts]
+[2024-03-09 11:59:37,608: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-09 11:59:37,608: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-09 11:59:37,608: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-09 11:59:37,889: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8004
+ * Running on https://192.168.88.54:8004]
+[2024-03-09 11:59:37,889: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-09 11:59:39,844: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:59:39] "GET / HTTP/1.1" 200 -]
+[2024-03-09 11:59:41,485: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:59:41] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-09 11:59:45,774: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 11:59:45,775: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:59:45] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 11:59:58,536: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 11:59:58,537: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 11:59:58] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:04,039: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:04,040: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:04] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:07,547: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:07,548: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:07] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:10,112: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:10,114: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:10] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:13,949: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:13,949: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:13] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:16,221: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:16,221: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:16] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]
+[2024-03-09 12:00:18,462: ERROR: app: Exception on /verify_direction [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 116, in verify_direction
+    direction_info = detect_face_direction(clApp.filename, clApp.face_mesh.face_mesh)
+AttributeError: 'ClientApp' object has no attribute 'face_mesh'
+[2024-03-09 12:00:18,462: INFO: _internal: 127.0.0.1 - - [09/Mar/2024 12:00:18] "[35m[1mPOST /verify_direction HTTP/1.1[0m" 500 -]

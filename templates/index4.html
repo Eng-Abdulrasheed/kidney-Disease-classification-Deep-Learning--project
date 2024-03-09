@@ -177,21 +177,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
     <script>
-        const vision = await FilesetResolver.forVisionTasks(
-            "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm"
-        );
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
         const captureButton = document.getElementById('capture');
-        const faceMesh = new FaceMesh({
-            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
-        });
-        faceMesh.setOptions({
-            maxNumFaces: 1,
-            minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5,
-        });    
+    
         // Define an array of style configurations
         var styles = [
             { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
@@ -203,7 +193,7 @@
             { bottom: '6%', left: '0', transform: 'rotate(40deg)', right: '', top: '' }, // Style Seven
             { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
         ];
-        
+    
         let images = [];
         let captureIndex = 0;
     
@@ -269,30 +259,37 @@
                     $("#loading").hide();
                     images = []; // Reset images for the next operation
         
+                    let directionsMessage = "";
+                    if (response.directions && response.directions.length > 0) {
+                        // Process each direction with its angles
+                        directionsMessage = response.directions.map((item, index) => {
+                            const direction = item.direction;
+                            const angles = item.angles;
+                            return `<li>Image ${index + 1}: ${direction} (x: ${angles.x.toFixed(2)}, y: ${angles.y.toFixed(2)}, z: ${angles.z.toFixed(2)})</li>`;
+                        }).join('');
+                        directionsMessage = `<ul>${directionsMessage}</ul>`;
+                    }
+        
                     if(response.average_prediction > 0.5) {
                         // Success case
                         document.querySelector('.jsonRes').innerHTML = `
                             <div class="alert alert-success" role="alert">
-                                Verified! Successfully verified as a live person.
+                                Verified! Successfully verified as a live person. ${directionsMessage}
                             </div>
                             <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
                         `;
-                        document.getElementById('start-over').addEventListener('click', function() {
-                            location.reload(); // Reload the page to start over
-                        });
                     } else {
                         // Failure case
                         document.querySelector('.jsonRes').innerHTML = `
                             <div class="alert alert-danger" role="alert">
-                                Not verified. Please try again.
+                                Not verified. Please try again. ${directionsMessage}
                             </div>
-                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`
-                            ;
-        
-                        document.getElementById('start-over').addEventListener('click', function() {
-                            location.reload(); // Reload the page to start over
-                        });
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`;
                     }
+        
+                    document.getElementById('start-over').addEventListener('click', function() {
+                        location.reload(); // Reload the page to start over
+                    });
                 },
                 error: function(err) {
                     console.error("Error in sending/receiving data.", err);
@@ -300,6 +297,7 @@
                 }
             });
         }        
+              
     
         function adjustVideoCanvasSize() {
             canvas.width = video.videoWidth;
@@ -353,7 +351,14 @@
                 context.restore();
             }
     
-            
+            const faceMesh = new FaceMesh({
+                locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+            });
+            faceMesh.setOptions({
+                maxNumFaces: 1,
+                minDetectionConfidence: 0.5,
+                minTrackingConfidence: 0.5,
+            });
             faceMesh.onResults(onResults);
     
             function onFrame() {
