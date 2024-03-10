@@ -5,7 +5,7 @@ from cnnClassifier.utils.common import decodeImage
 from cnnClassifier.pipeline.prediction import PredictionPipeline
 import mediapipe as mp
 import cv2
-import numpy as npz
+import numpy as np
 
 def detect_face_direction(image_path, face_mesh):
     image = cv2.imread(image_path)
