@@ -203,6 +203,7 @@
             maxNumFaces: 1,
             minDetectionConfidence: 0.5,
             minTrackingConfidence: 0.5,
+            refineLandmarks: true,
         });
         faceDirection =  faceMesh.onResults(onResults);
         console.log("Onresult face direction",faceDirection);
@@ -425,17 +426,56 @@
             context.save();
             context.clearRect(0, 0, canvas.width, canvas.height);
             context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
-
+            // Compute the depth of z axes from the left eye
+            var width = results.image.width;
+            var height = results.image.height;
+            console.log(width);
+            console.log(height);
+            var irisLeftMinX = Infinity; // Initialize to Infinity for min comparison
+            var irisLeftMaxX = -Infinity; // Initialize to -Infinity for max comparison
+        
             if (results.multiFaceLandmarks) {
                 for (const landmarks of results.multiFaceLandmarks) {
                     drawConnectors(context, landmarks, FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
                     globalFaceDirection = getDirection(landmarks); // Update the global variable
-                    // Note: You might want to break after the first face for efficiency
-                    break;
+        
+                    for (const point of FACEMESH_LEFT_IRIS) {
+                        if (landmarks[point[0]]) {
+                            var point0 = landmarks[point[0]];
+                            console.log(point0);
+                            //console.log(point0.z);
+        
+                            if (irisLeftMinX == -1 || point0.x * width < irisLeftMinX) {
+                                irisLeftMinX = point0.x * width;
+                            }
+                            if (irisLeftMaxX == -1 || point0.x * width > irisLeftMaxX) {
+                                irisLeftMaxX = point0.x * width;
+                            }
+                        }
+                    }
+                    
+                    // Ensure you break after the first face for efficiency, if that's your intention
+                    break; // This breaks out of the multiFaceLandmarks loop
                 }
             }
+        
+            // Ensure irisLeftMinX and irisLeftMaxX have been updated correctly
+            var dx = irisLeftMaxX - irisLeftMinX;
+            if (dx > 0) { // Ensure dx is not zero to avoid division by zero
+                var dX = 11.7;
+                // Logitech HD Pro C922 Norm focal
+                var normalizedFocaleX = 1.40625;
+                var fx = Math.min(width, height) * normalizedFocaleX;
+                var dZ = (fx * (dX / dx)) / 10.0;
+                dZ = dZ.toFixed(2);
+                console.log(dZ, "Cm");
+            } else {
+                console.log("Invalid iris dimensions for depth calculation.");
+            }
+        
             context.restore();
-        }      
+        }
+        
             
 
 
@@ -454,6 +494,7 @@
                 // Access the translation vector components
                 let tx = translation_vec.doubleAt(0); // Horizontal movement
                 let ty = translation_vec.doubleAt(1); // Vertical movement
+               // console.log(translation_vec.doubleAt(2));
             
                 // Adjust thresholds if necessary, based on observation
                 const thresholdX = 15;
@@ -479,7 +520,7 @@
                // erateElement.textContent = direction;
                 erateElement.style.display = 'block'; // Ensure the element is visible
             
-               // console.log("Estimated Direction:", direction);
+              // console.log("Estimated Direction:", direction);
                return direction
             }
 

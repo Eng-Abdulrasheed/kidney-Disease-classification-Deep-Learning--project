@@ -291,7 +291,6 @@
                     if (globalFaceDirection === expectedDirection) {
                         console.log("Directions match. Capturing image.");
                         erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
-                        erateElement.innerText = "Match";
                         erateElement.classList.remove("blinking"); // Stop blinking on match
                 
                         setTimeout(() => {
@@ -300,12 +299,12 @@
                     } else {
                         console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}. Retrying...`);
                         erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
-                        erateElement.innerText = "Adjust";
                         erateElement.classList.add("blinking"); // Start blinking to indicate mismatch
                 
                         setTimeout(checkDirectionAndCapture, 2000); // Adjust delay for retry as needed
                     }
                 };
+                
                 
                 
             
@@ -455,6 +454,7 @@
                 // Access the translation vector components
                 let tx = translation_vec.doubleAt(0); // Horizontal movement
                 let ty = translation_vec.doubleAt(1); // Vertical movement
+                console.log(translation_vec.doubleAt(2));
             
                 // Adjust thresholds if necessary, based on observation
                 const thresholdX = 15;
@@ -477,10 +477,10 @@
             
                 // Update the webpage with the estimated direction
                 const erateElement = document.getElementById('erate');
-                erateElement.textContent = direction;
+               // erateElement.textContent = direction;
                 erateElement.style.display = 'block'; // Ensure the element is visible
             
-               // console.log("Estimated Direction:", direction);
+              // console.log("Estimated Direction:", direction);
                return direction
             }
 
