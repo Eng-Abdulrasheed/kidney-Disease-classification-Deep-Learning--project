@@ -9,14 +9,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
-    <script async src="https://docs.opencv.org/master/opencv.js" onload="onOpenCvReady();" type="text/javascript"></script>
-   
-    <script type="text/javascript">
-        function onOpenCvReady() {
-            console.log('OpenCV.js is ready.');
-            console.log(cv)
-            // You can start using OpenCV.js functions here
-        }
     </script>
     <style>
         body {
@@ -176,11 +168,26 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
+    <script src="{{ url_for('static', filename='js/opencv.js') }}"></script>
+
     <script>
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
         const captureButton = document.getElementById('capture');
+        var faceDirection;
+
+        const faceMesh = new FaceMesh({
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+        });
+        faceMesh.setOptions({
+            maxNumFaces: 1,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5,
+        });
+        faceDirection =  faceMesh.onResults(onResults);
+        console.log("Onresult face direction",faceDirection);
+        
     
         // Define an array of style configurations
         var styles = [
@@ -194,8 +201,17 @@
             { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
         ];
     
+        function onOpenCvReady() {
+            console.log('OpenCV.js is ready.');
+            // Initialize FaceMesh or any other operations that require cv here
+            initializeFaceMesh();
+        }
+
+        
         let images = [];
+       // let images_dir = [];
         let captureIndex = 0;
+        
     
         function shuffleArray(array) {
             for (let i = array.length - 1; i > 0; i--) {
@@ -231,15 +247,39 @@
                 }, 1000); // 6 seconds for each capture cycle
             }
         }
-    
-        function rotateAndCapture() {
-            if (captureIndex < styles.length) {
-                applyStyle(styles[captureIndex]);
-                captureIndex++;
-                setTimeout(captureImage, 1000); // Wait 3 seconds before capturing
-            }
+        // Determine the style of the erate element
+        function determineExpectedDirection(style) {
+            // Simplified logic based on your style definitions
+            if (style.left) return "Left";
+            if (style.right) return "Right";
+            if (style.top) return "Up";
+            if (style.bottom) return "Down";
+            // Extend this logic based on your actual style-to-direction mappings
+            return "Forward"; // Fallback direction
         }
     
+        // Step 3: Access the global variable in rotateAndCapture
+        function rotateAndCapture() {
+            if (captureIndex < styles.length) {
+                const currentStyle = styles[captureIndex];
+                applyStyle(currentStyle);
+                setTimeout(() => {
+                    // Now you use the globalFaceDirection
+                    console.log("Current direction", globalFaceDirection);
+                    const expectedDirection = determineExpectedDirection(currentStyle);
+                    console.log("Expected direction", expectedDirection);
+                    if (globalFaceDirection === expectedDirection) {
+                        console.log("Directions match. Capturing image.");
+                        setTimeout(captureImage, 1000); // Assuming this function captures the image
+                    } else {
+                        console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}.`);
+                        // Handle direction mismatch (e.g., retry, give feedback, etc.)
+                    }
+                }, 1000); // Wait 1 second before checking the direction to ensure faceMesh had enough time to process
+                captureIndex++;
+            }
+        }
+            
         captureButton.addEventListener('click', function() {
             if (images.length === 0) {
                 shuffleArray(styles);
@@ -247,7 +287,7 @@
             }
         });
     
-        function sendImagesForPrediction(images) {
+        function sendImagesForPrediction(images) {``
             $("#loading").show();
             $.ajax({
                 url: "/predict", // Ensure this URL matches your server's endpoint
@@ -339,27 +379,151 @@
             });
     
         });
-            function onResults(results) {
-                context.save();
-                context.clearRect(0, 0, canvas.width, canvas.height);
-                context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
-                if (results.multiFaceLandmarks) {
-                    for (const landmarks of results.multiFaceLandmarks) {
-                        drawConnectors(context, landmarks, FACEMESH_TESSELATION, {color: '#C0C0C070', lineWidth: 1});
+        
+        let globalFaceDirection; // Step 1: Define a global variable
+
+        // Step 2: Update the global variable within onResults
+        function onResults(results) {
+            context.save();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+
+            if (results.multiFaceLandmarks) {
+                for (const landmarks of results.multiFaceLandmarks) {
+                    drawConnectors(context, landmarks, FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
+                    globalFaceDirection = getDirection(landmarks); // Update the global variable
+                    // Note: You might want to break after the first face for efficiency
+                    break;
+                }
+            }
+            context.restore();
+        }      
+            
+
+
+                        // Assuming the necessary OpenCV.js library is loaded and available as cv
+            // Also assuming context, video, canvas are already defined and set up for capturing and displaying video frames
+
+            function adjustVideoCanvasSize() {
+                // Adjust canvas size to match video stream size
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+            }
+                        
+            function estimateDirection(translation_vec) {
+                let direction = "Forward"; // Default direction
+            
+                // Access the translation vector components
+                let tx = translation_vec.doubleAt(0); // Horizontal movement
+                let ty = translation_vec.doubleAt(1); // Vertical movement
+            
+                // Adjust thresholds if necessary, based on observation
+                const thresholdX = 15;
+                const thresholdY = 15;
+            
+                // Determine primary direction
+                if (Math.abs(tx) > Math.abs(ty)) { // Horizontal movement is more significant
+                    if (tx > thresholdX) { // Note the inversion of comparison operator
+                        direction = "Left"; // Assuming positive tx is to the subject's right, which is "Left" from the observer's perspective
+                    } else if (tx < -thresholdX) {
+                        direction = "Right"; // Negative tx to the subject's left, "Right" from observer's view
+                    }
+                } else { // Vertical movement is more significant
+                    if (ty > thresholdY) { // Note the inversion of comparison operator
+                        direction = "Down"; // Assuming positive ty is downward movement
+                    } else if (ty < -thresholdY) {
+                        direction = "Up"; // Negative ty is upward movement
                     }
                 }
-                context.restore();
+            
+                // Update the webpage with the estimated direction
+                const erateElement = document.getElementById('erate');
+                erateElement.textContent = direction;
+                erateElement.style.display = 'block'; // Ensure the element is visible
+            
+               // console.log("Estimated Direction:", direction);
+               return direction
             }
-    
-            const faceMesh = new FaceMesh({
-                locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
-            });
-            faceMesh.setOptions({
-                maxNumFaces: 1,
-                minDetectionConfidence: 0.5,
-                minTrackingConfidence: 0.5,
-            });
-            faceMesh.onResults(onResults);
+
+            function getDirection(landmarks) {
+                adjustVideoCanvasSize();
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                let face_2d = [];
+                let face_3d = [];
+                let img_w = canvas.width;
+                let img_h = canvas.height;
+
+                // Define 3D model points.
+                let modelPoints = [
+                    [0.0, 0.0, 0.0],    // Nose tip
+                    [0.0, -330.0, -65.0], // Chin
+                    [-225.0, 170.0, -135.0], // Left eye left corner
+                    [225.0, 170.0, -135.0], // Right eye right corner
+                    [-150.0, -150.0, -125.0], // Left Mouth corner
+                    [150.0, -150.0, -125.0]  // Right mouth corner
+                ];
+
+                landmarks.forEach((lm, idx) => {
+                    // Example landmark indices, replace with actual indices for the nose tip, chin, eyes corners, mouth corners
+                    if ([33, 263, 1, 61, 291, 199].includes(idx)) {
+                        let x = lm.x * img_w;
+                        let y = lm.y * img_h;
+                        face_2d.push([x, y]);
+                        // Use modelPoints for 3D face points
+                        face_3d.push(modelPoints.shift());
+                    }
+                });
+
+                if (face_2d.length !== 6 || face_3d.length !== 6) {
+                    console.log("Insufficient points for pose estimation");
+                    return;
+                }
+
+                let face_2d_mat = cv.matFromArray(face_2d.length, 2, cv.CV_64FC1, [].concat(...face_2d));
+                let face_3d_mat = cv.matFromArray(face_3d.length, 3, cv.CV_64FC1, [].concat(...face_3d));
+
+                let focal_length = img_w;
+                let center = [img_w / 2, img_h / 2];
+                let cam_matrix = cv.matFromArray(3, 3, cv.CV_64FC1, [
+                    focal_length, 0, center[0],
+                    0, focal_length, center[1],
+                    0, 0, 1,
+                ]);
+
+                let dist_coeffs = cv.Mat.zeros(4, 1, cv.CV_64F);
+
+                let rotation_vec = new cv.Mat();
+                let translation_vec = new cv.Mat();
+
+                let success = cv.solvePnP(face_3d_mat, face_2d_mat, cam_matrix, dist_coeffs, rotation_vec, translation_vec, false, cv.SOLVEPNP_ITERATIVE);
+
+                if (!success) {
+                    console.log("Pose estimation failed");
+                    return;
+                }
+
+                // Directly estimate direction based on translation vector
+
+                let direction =  estimateDirection(translation_vec); 
+                
+               // console.log("Pose estimation succeeded:", direction);
+
+                // Assuming success, we proceed, but note that actual direction determination logic is missing here
+               // console.log("Pose estimation succeeded");
+
+                // Cleanup
+                face_2d_mat.delete(); face_3d_mat.delete();
+                cam_matrix.delete(); dist_coeffs.delete();
+                rotation_vec.delete(); translation_vec.delete();
+
+                return direction;
+            }
+
+            // Example usage of getDirection function, assuming landmarks are obtained from a facial landmark detection library
+
+
+
     
             function onFrame() {
                 faceMesh.send({image: video}).finally(() => {

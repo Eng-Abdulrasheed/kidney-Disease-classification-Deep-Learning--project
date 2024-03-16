@@ -4,56 +4,175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Web Camera Image Capture with FaceMesh</title>
+    <title>Web Camera Continuous Face Tracking</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <!-- Add MediaPipe FaceMesh and Camera Utils -->
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh"></script>
     <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils"></script>
+    </script>
     <style>
         body {
             margin: 0;
             padding: 0;
-            background-color: #fff; /* White background */
+            background-color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
         }
+
         .main {
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 20px;
             overflow: hidden;
             text-align: center;
-            position: relative;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             width: 80%;
             max-width: 800px;
         }
+
+        .image-part {
+            position: relative;
+            margin: auto;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
         #video, #canvas {
             position: absolute;
-            transform: scaleX(-1); /* Mirrors the video and canvas horizontally */
+            transform: scaleX(-1);
         }
+
         #video {
-            height: 100%; /* Adjust as per your requirement */
+            height: 100%;
         }
-        #canvas {
-            display: block; /* Ensure canvas is always visible */
+
+        .powered-by {
+            font-family: Arial, sans-serif;
+            color: #aaa;
+            position: absolute;
+            bottom: 20px;
+            left: center;
+            font-size: 0.75em;
         }
+
+        .btn-part { margin-top: 20px; text-align: center; }
+        .iupload {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .image-part::before {
+            position: relative;
+            margin: auto;
+            width: 100vw; /* Fill the entire viewport width */
+            height: 100vh; /* Fill the entire viewport height */
+            border-radius: 50%; /* Circular frame */
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff;
+        }
+
+        #loading { 
+            display: none; 
+            position: fixed; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            background: rgba(255,255,255,0.7); 
+            z-index: 9999; 
+        }
+        .loader { 
+            border: 8px solid #f3f3f3; 
+            border-radius: 50%; 
+            border-top: 8px solid #3498db; 
+            width: 60px; 
+            height: 60px; 
+            animation: spin 2s linear infinite; 
+            position: absolute; 
+            left: 50%; 
+            top: 50%; 
+            transform: translate(-50%, -50%); 
+        }
+        @keyframes spin { 
+            0% { transform: rotate(0deg); } 
+            100% { transform: rotate(360deg); } 
+        }
+        .notation {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: purple;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none; /* Hide until the video stream starts */
+        }
+
+
+        .erate {
+            position: absolute;
+            height: 27px;
+            width: 90px;
+            background: #ff0606; /* Initial color */
+            z-index: 1000;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Text color */
+            font-weight: bold;
+            transition: background-color 0.5s ease; /* Smooth transition for background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+        }
+        
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+          }
+          
+          .blinking {
+              animation: blink 1s infinite; /* Blink every second */
+          }
+          
+          
+     
     </style>
 </head>
 <body>
     <div class="main container">
         <div class="row">
-            <div class="col-12">
+            <div class="col-12 col-6">
                 <section class="iupload">
-                    <h3>Web Camera Image Capture</h3>
+                    <h3>Fintechsys Liveness System</h3>
                     <div class="image-part">
-                        <video id="video" autoplay playsinline width="720" height="560"></video>
-                        <canvas id="canvas" width="720" height="560"></canvas>
-                        <div class="powered-by">Powered by YourBrand</div>
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas"></canvas>
+                        
+                        <div class="powered-by">Powered by Fintechsys</div>
+                        <div id="erate" class="erate"></div>
+                        
                     </div>
                     <div class="btn-part">
                         <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
+                        
+                        
                     </div>
                     <h5>Prediction Results</h5>
                     <div class="res-part" style="border:1px solid #dedede; height: 310px; overflow:auto;">
@@ -63,67 +182,409 @@
             </div>
         </div>
     </div>
-
-    <!-- Your existing scripts for Bootstrap and jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <div id="loading"><div class="loader"></div></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
+    <script src="{{ url_for('static', filename='js/opencv.js') }}"></script>
 
     <script>
-        const videoElement = document.getElementById('video');
-        const canvasElement = document.getElementById('canvas');
-        const canvasCtx = canvasElement.getContext('2d');
+        const video = document.getElementById('video');
+        const canvas = document.getElementById('canvas');
+        const context = canvas.getContext('2d');
+        const captureButton = document.getElementById('capture');
+        var faceDirection;
 
         const faceMesh = new FaceMesh({
-            locateFile: file => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
         });
-
         faceMesh.setOptions({
             maxNumFaces: 1,
-            refineLandmarks: true,
             minDetectionConfidence: 0.5,
-            minTrackingConfidence: 0.5
+            minTrackingConfidence: 0.5,
         });
+        faceDirection =  faceMesh.onResults(onResults);
+        console.log("Onresult face direction",faceDirection);
+        
+    
+        // Define an array of style configurations
+        var styles = [
+            { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
+            { right: '-30px', transform: 'rotate(-90deg)', left: '', top: '', bottom: '' }, // Style Two
+            { bottom: '0', transform: 'rotate(0deg)', left: '', top: '', right: '' }, // Style Three
+            { top: '0', transform: 'rotate(0deg)', left: '', bottom: '', right: '' }, // Style Four
+            { top: '6%', right: '0', transform: 'rotate(40deg)', left: '', bottom: '' }, // Style Five
+            { top: '6%', left: '0', transform: 'rotate(-40deg)', right: '', bottom: '' }, // Style Six
+            { bottom: '6%', left: '0', transform: 'rotate(40deg)', right: '', top: '' }, // Style Seven
+            { bottom: '6%', right: '0', transform: 'rotate(-40deg)', left: '', top: '' } // Style Eight
+        ];
+    
+        function onOpenCvReady() {
+            console.log('OpenCV.js is ready.');
+            // Initialize FaceMesh or any other operations that require cv here
+            initializeFaceMesh();
+        }
 
-        faceMesh.onResults(onResults);
+        
+        let images = [];
+       // let images_dir = [];
+        let captureIndex = 0;
+        
+    
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+    
+        function applyStyle(style) {
+            const erateElement = document.querySelector('.erate');
+            erateElement.style.left = style.left;
+            erateElement.style.right = style.right;
+            erateElement.style.top = style.top;
+            erateElement.style.bottom = style.bottom;
+            erateElement.style.transform = style.transform;
+        }
+    
+        function captureImage() {
+            captureIndex++;
+            adjustVideoCanvasSize();
+            context.drawImage(video, 0, 0, canvas.width, canvas.height); 
+            var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
+            images.push(base64data);
+    
+            if (images.length === 8) {
+                sendImagesForPrediction(images);
+                images = []; // Reset the images array for next time
+                captureIndex = 0; // Reset capture index
+                // Stop the sequence, no need to explicitly stop as it will not continue automatically
+            } else {
+                setTimeout(() => {
+                    // Proceed to the next capture after a delay
+                    rotateAndCapture();
+                }, 1000); // 6 seconds for each capture cycle
+            }
+        }
+        // Determine the style of the erate element
+        function determineExpectedDirection(style) {
+            // Simplified logic based on your style definitions
+            if (style.left) return "Left";
+            if (style.right) return "Right";
+            if (style.top) return "Up";
+            if (style.bottom) return "Down";
+            // Extend this logic based on your actual style-to-direction mappings
+            return "Forward"; // Fallback direction
+        }
+    
+        // Step 3: Access the global variable in rotateAndCapture
+        function rotateAndCapture() {
+            if (captureIndex < styles.length) {
+                const currentStyle = styles[captureIndex];
+                applyStyle(currentStyle);
+                
+                const checkDirectionAndCapture = () => {
+                    const erateElement = document.getElementById('erate');
+                    const expectedDirection = determineExpectedDirection(currentStyle);
+                
+                    if (globalFaceDirection === expectedDirection) {
+                        console.log("Directions match. Capturing image.");
+                        erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
+                        erateElement.classList.remove("blinking"); // Stop blinking on match
+                
+                        setTimeout(() => {
+                            captureImage();
+                        }, 1000);
+                    } else {
+                        console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}. Retrying...`);
+                        erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
+                        erateElement.classList.add("blinking"); // Start blinking to indicate mismatch
+                
+                        setTimeout(checkDirectionAndCapture, 2000); // Adjust delay for retry as needed
+                    }
+                };
+                
+                
+                
+            
+                setTimeout(checkDirectionAndCapture, 1000); // Initial direction check after a delay
+            } else {
+                console.log("Session completed or no styles to process.");
+            }
+        }
+        
+        
+        
+        
+            
+        captureButton.addEventListener('click', function() {
+            if (images.length === 0) {
+                shuffleArray(styles);
+                rotateAndCapture();
+            }
+        });
+    
+        function sendImagesForPrediction(images) {``
+            $("#loading").show();
+            $.ajax({
+                url: "/predict", // Ensure this URL matches your server's endpoint
+                type: "POST",
+                data: JSON.stringify({ images: images }), // Sending array of images
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $("#loading").hide();
+                    images = []; // Reset images for the next operation
+        
+                    let directionsMessage = "";
+                    if (response.directions && response.directions.length > 0) {
+                        // Process each direction with its angles
+                        directionsMessage = response.directions.map((item, index) => {
+                            const direction = item.direction;
+                            const angles = item.angles;
+                            return `<li>Image ${index + 1}: ${direction} (x: ${angles.x.toFixed(2)}, y: ${angles.y.toFixed(2)}, z: ${angles.z.toFixed(2)})</li>`;
+                        }).join('');
+                        directionsMessage = `<ul>${directionsMessage}</ul>`;
+                    }
+        
+                    if(response.average_prediction > 0.5) {
+                        // Success case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-success" role="alert">
+                                Verified! Successfully verified as a live person. ${directionsMessage}
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
+                        `;
+                    } else {
+                        // Failure case
+                        document.querySelector('.jsonRes').innerHTML = `
+                            <div class="alert alert-danger" role="alert">
+                                Not verified. Please try again. ${directionsMessage}
+                            </div>
+                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`;
+                    }
+        
+                    document.getElementById('start-over').addEventListener('click', function() {
+                        location.reload(); // Reload the page to start over
+                    });
+                },
+                error: function(err) {
+                    console.error("Error in sending/receiving data.", err);
+                    $("#loading").hide();
+                }
+            });
+        }        
+              
+    
+        function adjustVideoCanvasSize() {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+        }
+        // Your existing mediaDevices and FaceMesh setup here
+        // No changes needed for those parts
+        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
+            .then(function(stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = adjustVideoCanvasSize; // Adjust size after video starts playing
+            })
+            .catch(function(err) {
+                console.log("An error occurred: " + err);
+            });
+        }
+    
+        captureButton.addEventListener('click', function() {
+    
+            adjustVideoCanvasSize(); // Ensure canvas size is correct at the moment of capture
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
+            
+            $("#loading").show();
+            $.ajax({
+                url: "../predict", // Ensure this URL matches your server's endpoint
+                type: "POST",
+                data: JSON.stringify({ image: base64data }),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function(response) {
+                    $("#loading").hide();
+                },
+                error: function(err) {
+                    console.error("Error in sending/receiving data.", err);
+                    $("#loading").hide();
+                }
+            });
+    
+        });
+        
+        let globalFaceDirection; // Step 1: Define a global variable
 
+        // Step 2: Update the global variable within onResults
         function onResults(results) {
-            canvasCtx.save();
-            canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
-            canvasCtx.drawImage(results.image, 0, 0, canvasElement.width, canvasElement.height);
+            context.save();
+            context.clearRect(0, 0, canvas.width, canvas.height);
+            context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
 
             if (results.multiFaceLandmarks) {
                 for (const landmarks of results.multiFaceLandmarks) {
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_TESSELATION, {color: '#C0C0C070', lineWidth: 1});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYE, {color: '#FF3030'});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_RIGHT_EYEBROW, {color: '#FF3030'});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYE, {color: '#30FF30'});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LEFT_EYEBROW, {color: '#30FF30'});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_FACE_OVAL, {color: '#E0E0E0'});
-                    drawConnectors(canvasCtx, landmarks, FACEMESH_LIPS, {color: '#F08080'});
+                    drawConnectors(context, landmarks, FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
+                    globalFaceDirection = getDirection(landmarks); // Update the global variable
+                    // Note: You might want to break after the first face for efficiency
+                    break;
                 }
             }
-            canvasCtx.restore();
-        }
+            context.restore();
+        }      
+            
 
-        function onCameraFrame() {
-            faceMesh.send({image: videoElement});
-        }
 
-        navigator.mediaDevices.getUserMedia({video: true})
-            .then((stream) => {
-                videoElement.srcObject = stream;
-                videoElement.addEventListener('loadedmetadata', () => {
-                    videoElement.play();
+                        // Assuming the necessary OpenCV.js library is loaded and available as cv
+            // Also assuming context, video, canvas are already defined and set up for capturing and displaying video frames
+
+            function adjustVideoCanvasSize() {
+                // Adjust canvas size to match video stream size
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+            }
+                        
+            function estimateDirection(translation_vec) {
+                let direction = "Forward"; // Default direction
+            
+                // Access the translation vector components
+                let tx = translation_vec.doubleAt(0); // Horizontal movement
+                let ty = translation_vec.doubleAt(1); // Vertical movement
+            
+                // Adjust thresholds if necessary, based on observation
+                const thresholdX = 15;
+                const thresholdY = 15;
+            
+                // Determine primary direction
+                if (Math.abs(tx) > Math.abs(ty)) { // Horizontal movement is more significant
+                    if (tx > thresholdX) { // Note the inversion of comparison operator
+                        direction = "Left"; // Assuming positive tx is to the subject's right, which is "Left" from the observer's perspective
+                    } else if (tx < -thresholdX) {
+                        direction = "Right"; // Negative tx to the subject's left, "Right" from observer's view
+                    }
+                } else { // Vertical movement is more significant
+                    if (ty > thresholdY) { // Note the inversion of comparison operator
+                        direction = "Down"; // Assuming positive ty is downward movement
+                    } else if (ty < -thresholdY) {
+                        direction = "Up"; // Negative ty is upward movement
+                    }
+                }
+            
+                // Update the webpage with the estimated direction
+                const erateElement = document.getElementById('erate');
+               // erateElement.textContent = direction;
+                erateElement.style.display = 'block'; // Ensure the element is visible
+            
+               // console.log("Estimated Direction:", direction);
+               return direction
+            }
+
+            function getDirection(landmarks) {
+                adjustVideoCanvasSize();
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                let face_2d = [];
+                let face_3d = [];
+                let img_w = canvas.width;
+                let img_h = canvas.height;
+
+                // Define 3D model points.
+                let modelPoints = [
+                    [0.0, 0.0, 0.0],    // Nose tip
+                    [0.0, -330.0, -65.0], // Chin
+                    [-225.0, 170.0, -135.0], // Left eye left corner
+                    [225.0, 170.0, -135.0], // Right eye right corner
+                    [-150.0, -150.0, -125.0], // Left Mouth corner
+                    [150.0, -150.0, -125.0]  // Right mouth corner
+                ];
+
+                landmarks.forEach((lm, idx) => {
+                    // Example landmark indices, replace with actual indices for the nose tip, chin, eyes corners, mouth corners
+                    if ([33, 263, 1, 61, 291, 199].includes(idx)) {
+                        let x = lm.x * img_w;
+                        let y = lm.y * img_h;
+                        face_2d.push([x, y]);
+                        // Use modelPoints for 3D face points
+                        face_3d.push(modelPoints.shift());
+                    }
                 });
 
-                new Camera(videoElement, {
-                    onFrame: onCameraFrame,
-                    width: 1280,
-                    height: 720
-                }).start();
-            });
+                if (face_2d.length !== 6 || face_3d.length !== 6) {
+                    console.log("Insufficient points for pose estimation");
+                    return;
+                }
 
+                let face_2d_mat = cv.matFromArray(face_2d.length, 2, cv.CV_64FC1, [].concat(...face_2d));
+                let face_3d_mat = cv.matFromArray(face_3d.length, 3, cv.CV_64FC1, [].concat(...face_3d));
+
+                let focal_length = img_w;
+                let center = [img_w / 2, img_h / 2];
+                let cam_matrix = cv.matFromArray(3, 3, cv.CV_64FC1, [
+                    focal_length, 0, center[0],
+                    0, focal_length, center[1],
+                    0, 0, 1,
+                ]);
+
+                let dist_coeffs = cv.Mat.zeros(4, 1, cv.CV_64F);
+
+                let rotation_vec = new cv.Mat();
+                let translation_vec = new cv.Mat();
+
+                let success = cv.solvePnP(face_3d_mat, face_2d_mat, cam_matrix, dist_coeffs, rotation_vec, translation_vec, false, cv.SOLVEPNP_ITERATIVE);
+
+                if (!success) {
+                    console.log("Pose estimation failed");
+                    return;
+                }
+
+                // Directly estimate direction based on translation vector
+
+                let direction =  estimateDirection(translation_vec); 
+                
+               // console.log("Pose estimation succeeded:", direction);
+
+                // Assuming success, we proceed, but note that actual direction determination logic is missing here
+               // console.log("Pose estimation succeeded");
+
+                // Cleanup
+                face_2d_mat.delete(); face_3d_mat.delete();
+                cam_matrix.delete(); dist_coeffs.delete();
+                rotation_vec.delete(); translation_vec.delete();
+
+                return direction;
+            }
+
+            // Example usage of getDirection function, assuming landmarks are obtained from a facial landmark detection library
+
+
+
+    
+            function onFrame() {
+                faceMesh.send({image: video}).finally(() => {
+                    window.requestAnimationFrame(onFrame);
+                });
+            }
+    
+            navigator.mediaDevices.getUserMedia({video: true})
+                .then((stream) => {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = (e) => {
+                        video.play();
+                        canvas.width = video.videoWidth;
+                        canvas.height = video.videoHeight;
+                        onFrame(); // Start the frame processing loop
+                    };
+                })
+                .catch((error) => {
+                    console.error(error);
+                    alert("Could not access the camera. Error: " + error.name);
+                });
+               
     </script>
+    
 </body>
 </html>
