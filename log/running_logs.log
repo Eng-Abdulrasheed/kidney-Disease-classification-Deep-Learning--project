@@ -20299,3 +20299,50 @@ cv2.error: OpenCV(4.9.0) /io/opencv/modules/imgproc/src/resize.cpp:4152: error: 
 [2024-03-18 10:39:35,114: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:39:35] "POST /predict HTTP/1.1" 200 -]
 [2024-03-18 10:41:11,518: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:41:11] "POST /predict HTTP/1.1" 200 -]
 [2024-03-18 10:41:44,595: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:41:44] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 11:00:26,959: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-18 11:00:26,960: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-18 11:00:26,960: INFO: common: created directory at: artifacts]
+[2024-03-18 11:00:26,960: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-18 11:00:26,960: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-18 11:00:26,960: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-18 11:00:27,293: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-18 11:00:27,293: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-18 11:00:30,326: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:00:30] "GET / HTTP/1.1" 200 -]
+[2024-03-18 11:00:30,678: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:00:30] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 11:00:32,260: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:00:32] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-18 11:01:31,835: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:01:31] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 11:02:11,559: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fbcb41f4ca0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-18 11:02:12,557: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fbcb403c1f0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-18 11:02:12,559: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:02:12] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 11:03:50,296: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-18 11:03:50,297: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-18 11:03:50,297: INFO: common: created directory at: artifacts]
+[2024-03-18 11:03:50,297: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-18 11:03:50,297: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-18 11:03:50,298: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-18 11:03:50,621: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-18 11:03:50,621: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-18 11:03:52,093: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:03:52] "GET / HTTP/1.1" 200 -]
+[2024-03-18 11:03:52,151: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:03:52] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 11:03:56,050: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:03:56] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 11:05:19,436: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-18 11:05:19,437: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-18 11:05:19,437: INFO: common: created directory at: artifacts]
+[2024-03-18 11:05:19,437: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-18 11:05:19,437: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-18 11:05:19,437: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-18 11:05:19,765: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-18 11:05:19,765: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-18 11:05:26,741: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:05:26] "GET / HTTP/1.1" 200 -]
+[2024-03-18 11:05:26,783: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:05:26] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 11:05:31,486: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:05:31] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 11:06:17,789: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 11:06:17] "POST /predict HTTP/1.1" 200 -]
