@@ -150,7 +150,18 @@
           .blinking {
               animation: blink 1s infinite; /* Blink every second */
           }
-          
+          .distance-message {
+            font-weight: bold; /* Make the text bolder */
+            color: #B8860B; /* Clear yellow color for visibility */
+            font-size: 20px; /* Larger font size for clarity */
+            padding: 10px; /* Some padding for better spacing */
+            border: 2px solid #FFEB3B; /* Bolder line with a clear color */
+            border-radius: 5px; /* Optional: adds rounded corners */
+            background-color: rgba(255, 235, 59, 0.2); /* Optional: soft background color */
+            margin: 20px 0; /* Adjust spacing around the message */
+        }        
+        
+        
           
      
     </style>
@@ -161,13 +172,13 @@
             <div class="col-12 col-6">
                 <section class="iupload">
                     <h3>Fintechsys Liveness System</h3>
+                    <div class="distance-message" style="text-align: center; margin-bottom: 20px;"></div>
                     <div class="image-part">
                         <video id="video" autoplay playsinline></video>
                         <canvas id="canvas"></canvas>
                         
                         <div class="powered-by">Powered by Fintechsys</div>
                         <div id="erate" class="erate"></div>
-                        
                     </div>
                     <div class="btn-part">
                         <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
@@ -188,6 +199,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
     <script src="{{ url_for('static', filename='js/opencv.js') }}"></script>
+    
 
     <script>
         const video = document.getElementById('video');
@@ -278,6 +290,8 @@
             // Extend this logic based on your actual style-to-direction mappings
             return "Forward"; // Fallback direction
         }
+
+
     
         // Step 3: Access the global variable in rotateAndCapture
         function rotateAndCapture() {
@@ -285,35 +299,45 @@
                 const currentStyle = styles[captureIndex];
                 applyStyle(currentStyle);
                 
-                const checkDirectionAndCapture = () => {
+                const checkDirectionAndDistanceAndCapture = () => {
                     const erateElement = document.getElementById('erate');
+                    const distanceMessageElement = document.querySelector('.distance-message'); // Access the new message element
                     const expectedDirection = determineExpectedDirection(currentStyle);
-                
-                    if (globalFaceDirection === expectedDirection) {
-                        console.log("Directions match. Capturing image.");
-                        erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
-                        erateElement.classList.remove("blinking"); // Stop blinking on match
-                
-                        setTimeout(() => {
-                            captureImage();
-                        }, 1000);
+                    
+                    // Check if the distance is within the acceptable range
+                    if (lastCalculatedDistance <= 40) {
+                        distanceMessageElement.textContent = ''; // Clear the message when the user is close enough
+                        if (globalFaceDirection === expectedDirection) {
+                            console.log("Directions match and distance is acceptable. Capturing image.");
+                            erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
+                            erateElement.classList.remove("blinking"); // Stop blinking on match
+                            
+                            setTimeout(() => {
+                                captureImage();
+                            }, 1000);
+                        } else {
+                            console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}. Retrying...`);
+                            erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
+                            erateElement.classList.add("blinking"); // Start blinking to indicate mismatch
+                            
+                            setTimeout(checkDirectionAndDistanceAndCapture, 2000); // Adjust delay for retry as needed
+                        }
                     } else {
-                        console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}. Retrying...`);
-                        erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
-                        erateElement.classList.add("blinking"); // Start blinking to indicate mismatch
-                
-                        setTimeout(checkDirectionAndCapture, 2000); // Adjust delay for retry as needed
+                        console.log("Please come closer to the camera.");
+                        distanceMessageElement.textContent = "Too far, please come closer"; // Update the message
+                        erateElement.style.backgroundColor = "#FFEB3B"; // Maintain or remove, as needed
+                        setTimeout(checkDirectionAndDistanceAndCapture, 2000); // Re-check after some time
                     }
                 };
                 
-                
-                
-            
-                setTimeout(checkDirectionAndCapture, 1000); // Initial direction check after a delay
+                setTimeout(checkDirectionAndDistanceAndCapture, 1000); // Initial direction check after a delay
             } else {
                 console.log("Session completed or no styles to process.");
             }
         }
+        
+        
+        
         
         
         
@@ -420,6 +444,8 @@
         });
         
         let globalFaceDirection; // Step 1: Define a global variable
+        let lastCalculatedDistance = 0; // Initialize with 0 or suitable default value
+
 
         // Step 2: Update the global variable within onResults
         function onResults(results) {
@@ -469,6 +495,7 @@
                 var dZ = (fx * (dX / dx)) / 10.0;
                 dZ = dZ.toFixed(2);
                 console.log(dZ, "Cm");
+                lastCalculatedDistance = dZ;
             } else {
                 console.log("Invalid iris dimensions for depth calculation.");
             }
@@ -497,8 +524,8 @@
                // console.log(translation_vec.doubleAt(2));
             
                 // Adjust thresholds if necessary, based on observation
-                const thresholdX = 15;
-                const thresholdY = 15;
+                const thresholdX = 8;
+                const thresholdY = 8;
             
                 // Determine primary direction
                 if (Math.abs(tx) > Math.abs(ty)) { // Horizontal movement is more significant

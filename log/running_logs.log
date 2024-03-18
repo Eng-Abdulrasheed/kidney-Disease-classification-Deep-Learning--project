@@ -19658,3 +19658,644 @@ NameError: name 'np' is not defined
 [2024-03-16 13:53:10,563: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 13:53:10] "POST /predict HTTP/1.1" 200 -]
 [2024-03-16 13:53:13,788: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 13:53:13] "GET / HTTP/1.1" 200 -]
 [2024-03-16 13:53:13,863: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 13:53:13] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-16 14:02:40,505: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:02:40] "POST /predict HTTP/1.1" 200 -]
+[2024-03-16 14:03:13,946: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:03:13] "GET / HTTP/1.1" 200 -]
+[2024-03-16 14:03:13,999: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:03:13] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-16 14:08:22,354: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:08:22] "GET / HTTP/1.1" 200 -]
+[2024-03-16 14:08:22,405: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:08:22] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-16 14:08:30,234: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:08:30] "POST /predict HTTP/1.1" 200 -]
+[2024-03-16 14:09:15,946: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:09:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-16 14:09:38,227: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:09:38] "GET / HTTP/1.1" 200 -]
+[2024-03-16 14:09:38,274: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:09:38] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-16 14:09:47,575: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:09:47] "POST /predict HTTP/1.1" 200 -]
+[2024-03-16 14:10:24,499: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 113, in predictBatchRoute
+    result = clApp.classifier.predict()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 57, in predict
+    test_image = self.preprocess_image(test_image)
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 33, in preprocess_image
+    resized_face = cv2.resize(face_image_rgb, (512, 512))
+cv2.error: OpenCV(4.9.0) /io/opencv/modules/imgproc/src/resize.cpp:4152: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+
+[2024-03-16 14:10:24,501: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:10:24] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2024-03-16 14:10:37,975: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:10:37] "GET / HTTP/1.1" 200 -]
+[2024-03-16 14:10:38,048: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:10:38] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-16 14:10:44,463: INFO: _internal: 127.0.0.1 - - [16/Mar/2024 14:10:44] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 11:11:48,788: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 11:11:48,790: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 11:11:48,790: INFO: common: created directory at: artifacts]
+[2024-03-17 11:11:48,790: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 11:11:48,790: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 11:11:48,790: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 11:11:49,103: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 11:11:49,103: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 11:11:51,612: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 11:11:51] "GET / HTTP/1.1" 200 -]
+[2024-03-17 11:11:51,885: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 11:11:51] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 11:11:53,171: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 11:11:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 11:11:56,569: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 11:11:56] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 11:12:40,616: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 11:12:40] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:08:35,965: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 12:08:35,966: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 12:08:35,966: INFO: common: created directory at: artifacts]
+[2024-03-17 12:08:35,966: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 12:08:35,966: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 12:08:35,966: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 12:08:36,250: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 12:08:36,250: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 12:08:39,190: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:08:39] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:08:39,485: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:08:39] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 12:08:40,923: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:08:40] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 12:09:00,528: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:09:00] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:09:53,304: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:09:53] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:12:04,163: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 12:12:04,164: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 12:12:04,164: INFO: common: created directory at: artifacts]
+[2024-03-17 12:12:04,164: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 12:12:04,165: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 12:12:04,165: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 12:12:04,475: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 12:12:04,475: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 12:12:09,986: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:09] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:12:10,264: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:10] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 12:12:11,665: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 12:12:15,917: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:12:40,684: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:40] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:12:40,734: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:40] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 12:12:43,310: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:12:43] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:13:19,209: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 12:13:19,210: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 12:13:19,210: INFO: common: created directory at: artifacts]
+[2024-03-17 12:13:19,210: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 12:13:19,210: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 12:13:19,210: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 12:13:19,515: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 12:13:19,515: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 12:13:21,408: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:13:21] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:13:21,725: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:13:21] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 12:13:23,105: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:13:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 12:13:25,643: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:13:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:14:00,568: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:00] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:14:02,754: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:14:04,435: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:04] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:14:04,473: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:04] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 12:14:07,199: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:07] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:14:52,767: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:52] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:14:55,547: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:55] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:14:55,619: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:14:55] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 12:21:05,373: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 12:21:05,374: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 12:21:05,374: INFO: common: created directory at: artifacts]
+[2024-03-17 12:21:05,374: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 12:21:05,374: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 12:21:05,374: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 12:21:05,674: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 12:21:05,674: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 12:21:08,705: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:08] "GET / HTTP/1.1" 200 -]
+[2024-03-17 12:21:09,022: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:09] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 12:21:10,437: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 12:21:19,306: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:19] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:21:25,161: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:21:27,453: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:27] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:21:30,031: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:30] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:21:31,757: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:31] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 12:21:34,571: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 12:21:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 13:15:02,838: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 13:15:02,839: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 13:15:02,839: INFO: common: created directory at: artifacts]
+[2024-03-17 13:15:02,839: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 13:15:02,839: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 13:15:02,839: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 13:15:03,150: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 13:15:03,150: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:02:04,968: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:02:04,969: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:02:04,970: INFO: common: created directory at: artifacts]
+[2024-03-17 14:02:04,970: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:02:04,970: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:02:04,970: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:02:05,286: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:02:05,286: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:02:07,572: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:07] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:02:07,882: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:07] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:02:09,329: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:09] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:02:14,448: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:02:31,432: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:31] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:02:59,720: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:59] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:02:59,764: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:02:59] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:03:02,373: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:03:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:16:35,595: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:16:35] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:16:38,096: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:16:38] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:16:41,477: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:16:41] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:16:41,521: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:16:41] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:16:44,727: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:16:44] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:20:07,564: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:20:07,566: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:20:07,566: INFO: common: created directory at: artifacts]
+[2024-03-17 14:20:07,566: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:20:07,566: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:20:07,566: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:20:08,040: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:20:08,040: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:20:08,723: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:20:08] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:20:08,756: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:20:08] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:20:12,631: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:20:12] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:21:08,393: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:08] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:21:08,440: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:08] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:21:25,468: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:25] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:21:25,512: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:25] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:21:49,255: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:21:49,257: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:21:49,257: INFO: common: created directory at: artifacts]
+[2024-03-17 14:21:49,257: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:21:49,257: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:21:49,257: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:21:49,699: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:21:49,699: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:21:51,331: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:51] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:21:51,371: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:51] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:21:55,136: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:21:55] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:26:15,528: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:26:15,529: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:26:15,529: INFO: common: created directory at: artifacts]
+[2024-03-17 14:26:15,529: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:26:15,529: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:26:15,529: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:26:15,847: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:26:15,847: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:26:17,637: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:26:17] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:26:17,939: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:26:17] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:26:19,324: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:26:19] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:27:06,219: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:27:06,220: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:27:06,220: INFO: common: created directory at: artifacts]
+[2024-03-17 14:27:06,220: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:27:06,220: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:27:06,220: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:27:06,530: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:27:06,530: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:27:09,344: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:27:09] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:27:09,640: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:27:09] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:27:10,989: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:27:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:27:14,333: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:27:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:28:03,608: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:28:03] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:31:12,190: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:31:12,191: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:31:12,191: INFO: common: created directory at: artifacts]
+[2024-03-17 14:31:12,191: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:31:12,191: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:31:12,191: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:31:12,542: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:31:12,542: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:31:15,247: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:31:15] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:31:15,543: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:31:15] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:31:17,048: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:31:17] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:31:22,669: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:31:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:32:14,098: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:32:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:33:41,055: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:33:41] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:33:41,136: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:33:41] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:33:43,918: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:33:43] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:34:25,944: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:34:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:34:34,391: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:34:34] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:34:34,460: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:34:34] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:34:38,271: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:34:38] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:35:21,776: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fdfec316f70> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-17 14:35:22,892: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fdfec316040> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-17 14:35:23,936: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:35:23] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:36:30,902: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:36:30] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:36:30,976: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:36:30] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:36:34,504: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:36:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:36:51,111: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:36:51] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:36:51,149: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:36:51] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:37:09,827: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:37:09,829: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:37:09,829: INFO: common: created directory at: artifacts]
+[2024-03-17 14:37:09,829: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:37:09,829: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:37:09,829: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:37:10,265: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:37:10,265: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:37:11,530: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:37:11] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:37:11,562: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:37:11] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:37:15,523: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:37:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:38:02,369: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:38:02] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:38:05,891: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:38:05] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:38:05,956: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:38:05] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:38:09,295: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:38:09] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:39:08,945: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:39:08] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:40:06,324: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:40:06,326: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:40:06,326: INFO: common: created directory at: artifacts]
+[2024-03-17 14:40:06,326: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:40:06,326: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:40:06,326: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:40:06,741: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:40:06,741: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:40:07,946: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:40:07] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:40:07,982: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:40:07] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:40:18,275: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:40:18] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:41:28,341: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:41:28,344: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:41:28,344: INFO: common: created directory at: artifacts]
+[2024-03-17 14:41:28,344: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:41:28,344: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:41:28,345: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:41:28,930: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:41:28,930: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:41:29,748: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:41:29] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:41:29,798: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:41:29] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:41:34,225: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:41:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:42:15,903: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:42:15] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:44:03,095: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:44:03,098: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:44:03,099: INFO: common: created directory at: artifacts]
+[2024-03-17 14:44:03,099: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:44:03,099: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:44:03,100: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:44:03,895: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:44:03,895: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:44:07,178: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:07] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:44:07,232: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:07] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:44:10,218: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:10] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:44:43,058: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:44:43,060: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:44:43,060: INFO: common: created directory at: artifacts]
+[2024-03-17 14:44:43,060: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:44:43,060: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:44:43,060: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:44:43,470: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:44:43,470: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:44:45,540: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:45] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:44:45,826: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:45] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:44:47,324: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:47] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:44:48,511: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:44:48] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:45:17,489: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:45:17,491: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:45:17,491: INFO: common: created directory at: artifacts]
+[2024-03-17 14:45:17,491: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:45:17,491: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:45:17,491: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:45:17,906: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:45:17,906: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:45:22,335: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:45:22] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:45:22,394: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:45:22] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 14:45:25,591: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:45:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:47:14,763: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:47:14,764: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:47:14,765: INFO: common: created directory at: artifacts]
+[2024-03-17 14:47:14,765: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:47:14,765: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:47:14,765: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:47:15,066: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:47:15,066: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:47:18,567: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:47:18] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:47:18,844: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:47:18] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:47:20,227: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:47:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:47:22,999: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:47:22] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:49:39,970: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:49:39,971: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:49:39,971: INFO: common: created directory at: artifacts]
+[2024-03-17 14:49:39,971: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:49:39,971: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:49:39,971: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:49:40,278: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:49:40,278: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:49:42,467: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:49:42] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:49:42,739: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:49:42] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:49:44,063: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:49:44] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:49:45,202: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:49:45] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:50:20,117: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:50:20,118: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:50:20,118: INFO: common: created directory at: artifacts]
+[2024-03-17 14:50:20,118: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:50:20,118: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:50:20,118: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:50:20,440: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8001
+ * Running on https://192.168.88.54:8001]
+[2024-03-17 14:50:20,440: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:50:22,621: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:50:22] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:50:22,897: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:50:22] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:50:24,224: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:50:24] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:50:33,153: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:50:33] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:50:51,434: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:50:51,435: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:50:51,436: INFO: common: created directory at: artifacts]
+[2024-03-17 14:50:51,436: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:50:51,436: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:50:51,436: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:51:08,693: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:51:08,694: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:51:08,694: INFO: common: created directory at: artifacts]
+[2024-03-17 14:51:08,694: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:51:08,694: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:51:08,694: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:51:08,998: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:51:08,998: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:51:11,033: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:51:11] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:51:11,307: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:51:11] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:51:12,621: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:51:12] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:51:14,248: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:51:14] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:54:19,002: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:54:19,004: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:54:19,004: INFO: common: created directory at: artifacts]
+[2024-03-17 14:54:19,004: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:54:19,004: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:54:19,004: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:54:19,316: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:54:19,316: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:54:24,747: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:24] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:54:25,030: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:25] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:54:26,408: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:54:27,719: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:27] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:54:45,139: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:54:45,140: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:54:45,140: INFO: common: created directory at: artifacts]
+[2024-03-17 14:54:45,140: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:54:45,140: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:54:45,140: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:54:45,479: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:54:45,479: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:54:48,283: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:48] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:54:48,560: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:48] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:54:49,994: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:49] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:54:50,587: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:54:50] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:55:07,284: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:55:07,285: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:55:07,286: INFO: common: created directory at: artifacts]
+[2024-03-17 14:55:07,286: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:55:07,286: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:55:07,286: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:55:07,594: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:55:07,594: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:55:09,215: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:55:09] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:55:09,498: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:55:09] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:55:10,933: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:55:10] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:55:16,415: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:55:16] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:56:41,806: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:56:41,807: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:56:41,807: INFO: common: created directory at: artifacts]
+[2024-03-17 14:56:41,807: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:56:41,807: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:56:41,807: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:56:42,110: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:56:42,110: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:56:44,239: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:56:44] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:56:44,510: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:56:44] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:56:45,958: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:56:45] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:56:46,934: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:56:46] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:59:19,315: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 14:59:19,316: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 14:59:19,316: INFO: common: created directory at: artifacts]
+[2024-03-17 14:59:19,317: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 14:59:19,317: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 14:59:19,317: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 14:59:19,647: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 14:59:19,647: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 14:59:21,992: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:21] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:59:22,268: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:22] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 14:59:23,672: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:23] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 14:59:25,028: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 14:59:48,964: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:48] "GET / HTTP/1.1" 200 -]
+[2024-03-17 14:59:49,005: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 14:59:49] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:00:19,942: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 15:00:19,944: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 15:00:19,944: INFO: common: created directory at: artifacts]
+[2024-03-17 15:00:19,945: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 15:00:19,945: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 15:00:19,945: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 15:00:20,283: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 15:00:20,283: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 15:00:20,997: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:00:20] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:00:21,025: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:00:21] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 15:00:24,229: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:00:24] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:01:04,943: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:04] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:01:05,016: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:05] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:01:08,239: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:08] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:01:45,770: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:45] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:01:51,137: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:51] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:01:51,197: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:51] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:01:59,845: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:01:59] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:02:51,349: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:02:51] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:03:55,913: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:03:55] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:03:55,975: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:03:55] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:05:34,538: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:05:34] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:05:55,498: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:05:55] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:05:55,538: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:05:55] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:05:57,537: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:05:57] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:06:06,040: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:06] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:06:06,090: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:06] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:06:21,709: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 15:06:21,710: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 15:06:21,710: INFO: common: created directory at: artifacts]
+[2024-03-17 15:06:21,710: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 15:06:21,710: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 15:06:21,710: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 15:06:22,038: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 15:06:22,038: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 15:06:23,789: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:23] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:06:24,092: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:24] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 15:06:25,499: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:25] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 15:06:28,149: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:06:28] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:07:04,872: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7fcd6ffe1ee0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-17 15:07:05,221: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:05] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:07:08,131: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:08] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:07:08,192: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:08] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:07:11,427: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:11] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:07:24,869: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:24] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:07:24,924: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:24] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-17 15:07:28,691: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:07:28] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:07:58,078: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 15:07:58,079: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 15:07:58,079: INFO: common: created directory at: artifacts]
+[2024-03-17 15:07:58,079: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 15:07:58,079: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 15:07:58,079: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 15:07:58,382: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 15:07:58,382: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 15:08:02,511: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:02] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:08:02,796: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:02] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 15:08:04,128: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:04] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 15:08:06,491: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:06] "POST /predict HTTP/1.1" 200 -]
+[2024-03-17 15:08:33,224: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-17 15:08:33,225: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-17 15:08:33,225: INFO: common: created directory at: artifacts]
+[2024-03-17 15:08:33,225: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-17 15:08:33,226: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-17 15:08:33,226: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-17 15:08:33,534: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-17 15:08:33,534: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-17 15:08:36,048: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:36] "GET / HTTP/1.1" 200 -]
+[2024-03-17 15:08:36,342: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:36] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-17 15:08:37,794: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:37] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-17 15:08:39,966: INFO: _internal: 127.0.0.1 - - [17/Mar/2024 15:08:39] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:28:09,254: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-18 10:28:09,255: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-18 10:28:09,256: INFO: common: created directory at: artifacts]
+[2024-03-18 10:28:09,256: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-18 10:28:09,256: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-18 10:28:09,256: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-18 10:28:09,596: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-18 10:28:09,596: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-18 10:28:12,348: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:28:12] "GET / HTTP/1.1" 200 -]
+[2024-03-18 10:28:12,686: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:28:12] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 10:28:14,758: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:28:14] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-18 10:28:23,580: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:28:23] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:29:47,767: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:29:47] "GET / HTTP/1.1" 200 -]
+[2024-03-18 10:29:47,849: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:29:47] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 10:30:04,634: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:30:04] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:30:39,634: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:30:39] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:34:57,655: INFO: common: yaml file: config/config.yaml loaded successfully]
+[2024-03-18 10:34:57,656: INFO: common: yaml file: params.yaml loaded successfully]
+[2024-03-18 10:34:57,656: INFO: common: created directory at: artifacts]
+[2024-03-18 10:34:57,656: INFO: common: created directory at: artifacts/data_preprocessing]
+[2024-03-18 10:34:57,656: INFO: common: created directory at: artifacts/data_preprocessing/real]
+[2024-03-18 10:34:57,656: INFO: common: created directory at: artifacts/data_preprocessing/fake]
+[2024-03-18 10:34:57,955: INFO: _internal: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on https://127.0.0.1:8002
+ * Running on https://192.168.88.54:8002]
+[2024-03-18 10:34:57,956: INFO: _internal: [33mPress CTRL+C to quit[0m]
+[2024-03-18 10:35:19,133: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:35:19] "GET / HTTP/1.1" 200 -]
+[2024-03-18 10:35:19,396: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:35:19] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 10:35:20,708: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:35:20] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -]
+[2024-03-18 10:35:25,345: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:35:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:36:24,813: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:36:24] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:37:23,376: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:37:23] "GET / HTTP/1.1" 200 -]
+[2024-03-18 10:37:23,441: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:37:23] "[36mGET /static/js/opencv.js HTTP/1.1[0m" 304 -]
+[2024-03-18 10:37:25,205: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:37:25] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:38:01,890: WARNING: polymorphic_function: 5 out of the last 5 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f9dd23c1dc0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-18 10:38:02,895: WARNING: polymorphic_function: 6 out of the last 6 calls to <function Model.make_predict_function.<locals>.predict_function at 0x7f9d9d35a1f0> triggered tf.function retracing. Tracing is expensive and the excessive number of tracings could be due to (1) creating @tf.function repeatedly in a loop, (2) passing tensors with different shapes, (3) passing Python objects instead of tensors. For (1), please define your @tf.function outside of the loop. For (2), @tf.function has reduce_retracing=True option that can avoid unnecessary retracing. For (3), please refer to https://www.tensorflow.org/guide/function#controlling_retracing and https://www.tensorflow.org/api_docs/python/tf/function for  more details.]
+[2024-03-18 10:38:06,485: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:06] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:38:13,133: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:13] "GET / HTTP/1.1" 200 -]
+[2024-03-18 10:38:13,218: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:13] "GET /static/js/opencv.js HTTP/1.1" 200 -]
+[2024-03-18 10:38:16,075: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:16] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:38:48,496: ERROR: app: Exception on /predict [POST]]
+Traceback (most recent call last):
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/fintechsys/anaconda3/envs/kidney/lib/python3.8/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+  File "app.py", line 113, in predictBatchRoute
+    result = clApp.classifier.predict()
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 57, in predict
+    test_image = self.preprocess_image(test_image)
+  File "/home/fintechsys/MLflow projects/kidney-Disease-classification-Deep-Learning--project/src/cnnClassifier/pipeline/prediction.py", line 33, in preprocess_image
+    resized_face = cv2.resize(face_image_rgb, (512, 512))
+cv2.error: OpenCV(4.9.0) /io/opencv/modules/imgproc/src/resize.cpp:4152: error: (-215:Assertion failed) !ssize.empty() in function 'resize'
+
+[2024-03-18 10:38:48,498: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:48] "[35m[1mPOST /predict HTTP/1.1[0m" 500 -]
+[2024-03-18 10:38:53,289: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:38:53] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:39:35,114: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:39:35] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:41:11,518: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:41:11] "POST /predict HTTP/1.1" 200 -]
+[2024-03-18 10:41:44,595: INFO: _internal: 127.0.0.1 - - [18/Mar/2024 10:41:44] "POST /predict HTTP/1.1" 200 -]
