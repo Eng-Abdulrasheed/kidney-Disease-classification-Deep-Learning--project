@@ -96,7 +96,7 @@ clApp = ClientApp()  # Move this outside to ensure it's initialized globally
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('index3.html')
+    return render_template('index10.html')
 
 @app.route("/predict", methods=['POST'])
 @app.route("/predict", methods=['POST'])
@@ -126,6 +126,6 @@ def predictBatchRoute():
 
 if __name__ == "__main__":
     if os.path.exists('cert.pem') and os.path.exists('key.pem'):
-        app.run(host='0.0.0.0', port=8002, ssl_context=('cert.pem', 'key.pem'))
+        app.run(host='0.0.0.0', port=8000, ssl_context=('cert.pem', 'key.pem'))
     else:
-        app.run(host='0.0.0.0', port=8002)
+        app.run(host='0.0.0.0', port=8000)

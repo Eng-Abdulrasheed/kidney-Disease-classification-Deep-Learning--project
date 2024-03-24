@@ -182,11 +182,7 @@
                         <div class="powered-by">Powered by Fintechsys</div>
                         <div id="erate" class="erate"></div>
                     </div>
-                    <div class="btn-part">
-                        <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
-                        
-                        
-                    </div>
+                    
                     <h5>Prediction Results</h5>
                     <div class="res-part" style="border:1px solid #dedede; height: 310px; overflow:auto;">
                         <div class="jsonRes"></div>
@@ -232,26 +228,25 @@
     
 
     <script>
+        
+        const captureButton = document.getElementById('startButton');
         $(document).ready(function(){
             // Show the modal on page load
             $("#instructionModal").modal('show');
 
             // When the user clicks 'Go', hide the modal and start the capture process
-            $("#startButton").on("click", function(){
+            captureButton.addEventListener('click', function(){
                 $("#instructionModal").modal('hide');
-                startFaceTracking(); // This should start your face tracking functionality
+                if (images.length === 0) {
+                    shuffleArray(styles);
+                    rotateAndCapture();
+            }
             });
         });
-        
-        function startFaceTracking() {
-            // Your face tracking start logic here
-            // Maybe calling rotateAndCapture or enabling the capture button
-        }
         
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
-        const captureButton = document.getElementById('capture');
         var faceDirection;
 
         const faceMesh = new FaceMesh({
@@ -306,11 +301,13 @@
             erateElement.style.bottom = style.bottom;
             erateElement.style.transform = style.transform;
         }
+        const width_img = 320;
+        const height_img = 240;
     
         function captureImage() {
             captureIndex++;
             adjustVideoCanvasSize();
-            context.drawImage(video, 0, 0, canvas.width, canvas.height); 
+            context.drawImage(video, 0, 0,width_img, height_img); 
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
             images.push(base64data);
     
@@ -343,8 +340,8 @@
 
         function checkLighting() {
             const canvasContext = canvas.getContext('2d');
-            canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+            canvasContext.drawImage(video, 0, 0, width_img, height_img);
+            const imageData = canvasContext.getImageData(0, 0, width_img, height_img);
             let totalBrightness = 0;
         
             for (let i = 0; i < imageData.data.length; i += 4) {
@@ -352,7 +349,7 @@
                 totalBrightness += 0.2126 * imageData.data[i] + 0.7152 * imageData.data[i + 1] + 0.0722 * imageData.data[i + 2];
             }
         
-            const avgBrightness = totalBrightness / (canvas.width * canvas.height);
+            const avgBrightness = totalBrightness / (width_img * height_img);
             return avgBrightness;
         }
 
@@ -369,36 +366,42 @@
                     const distanceMessageElement = document.querySelector('.distance-message');
                     const expectedDirection = determineExpectedDirection(currentStyle);
                     const avgBrightness = checkLighting(); // Check the lighting here
-                    console.log('brightness')
-                    console.log(avgBrightness)
         
-                    // Define a threshold for brightness that you consider "good lighting"
+                    // Define thresholds
                     const brightnessThreshold = 120; // Adjust this threshold based on your needs
+                    const minDistanceThreshold = 30;
+                    const maxDistanceThreshold = 40;
+                    console.log(avgBrightness)
+
         
-                    if (lastCalculatedDistance <= 40 && avgBrightness >= brightnessThreshold) {
-                        distanceMessageElement.textContent = ''; // Clear the message when the user is close enough and brightness is good
+                    // Check if the distance is within the acceptable range and if the brightness is good
+                    if (lastCalculatedDistance >= minDistanceThreshold && lastCalculatedDistance <= maxDistanceThreshold && avgBrightness >= brightnessThreshold) {
+                        distanceMessageElement.textContent = ''; // Clear any previous message
                         let elapsedTime = Date.now() - attemptStartTime;
         
                         if (globalFaceDirection === expectedDirection) {
-                            //console.log("Directions match, distance is acceptable, and lighting is good. Capturing image.");
                             erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
                             erateElement.classList.remove("blinking"); // Stop blinking on match
                             setTimeout(() => {
                                 captureImage();
                             }, 500);
                         } else if (elapsedTime <= 8000) {
-                            //console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${globalFaceDirection}. Retrying...`);
                             erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
                             erateElement.classList.add("blinking"); // Continue blinking to indicate mismatch
                             setTimeout(checkDirectionAndDistanceAndCapture, 200); // Check more frequently within the 5-second window
                         } else {
-                            // If 5 seconds have passed without correct direction
                             displayFailureMessage("Please adjust your position and try again.");
                         }
                     } else {
-                        // Handle poor distance or lighting
-                        console.log("Please adjust your position for better distance or lighting.");
-                        distanceMessageElement.textContent = avgBrightness < brightnessThreshold ? "اختر اضاءة جيدة" : "فضلا..عليك الاقتراب قليلا من الكامير";
+                        // Handle cases for poor distance or lighting
+                        if (avgBrightness < brightnessThreshold) {
+                            distanceMessageElement.textContent = "اختر اضاءة جيدة";
+                        } else if (lastCalculatedDistance < minDistanceThreshold) {
+                            distanceMessageElement.textContent = "من فضلك ابتعد قليلا عن الكاميرا";
+                        } else if (lastCalculatedDistance > maxDistanceThreshold) {
+                            distanceMessageElement.textContent = "فضلا..عليك الاقتراب قليلا من الكامير";
+                        }
+        
                         erateElement.style.backgroundColor = "#FFEB3B"; // Yellow color for warning
                         setTimeout(checkDirectionAndDistanceAndCapture, 2000); // Re-check after some time
                     }
@@ -409,6 +412,7 @@
                 console.log("Session completed or no styles to process.");
             }
         }
+        
         
         
         function displayFailureMessage() {
@@ -429,12 +433,7 @@
         
         
             
-        captureButton.addEventListener('click', function() {
-            if (images.length === 0) {
-                shuffleArray(styles);
-                rotateAndCapture();
-            }
-        });
+        
     
         function sendImagesForPrediction(images) {``
             $("#loading").show();
@@ -488,7 +487,7 @@
         }        
         
         function adjustVideoCanvasSize() {
-            canvas.width = video.videoWidth;
+            canvas.width = width_img;
             canvas.height = video.videoHeight;
         }
         // Your existing mediaDevices and FaceMesh setup here
@@ -507,7 +506,7 @@
         captureButton.addEventListener('click', function() {
     
             adjustVideoCanvasSize(); // Ensure canvas size is correct at the moment of capture
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            context.drawImage(video, 0, 0, width_img, height_img);
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
             
             $("#loading").show();
@@ -535,8 +534,8 @@
         // Step 2: Update the global variable within onResults
         function onResults(results) {
             context.save();
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
+            context.clearRect(0, 0, width_img, height_img);
+            context.drawImage(results.image, 0, 0, width_img, height_img);
             // Compute the depth of z axes from the left eye
             var width = results.image.width;
             var height = results.image.height;
@@ -596,8 +595,8 @@
 
             function adjustVideoCanvasSize() {
                 // Adjust canvas size to match video stream size
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
+                canvas.width = width_img;
+                canvas.height = height_img;
             }
                         
             function estimateDirection(translation_vec) {
@@ -638,12 +637,12 @@
 
             function getDirection(landmarks) {
                 adjustVideoCanvasSize();
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                context.drawImage(video, 0, 0, width_img, height_img);
 
                 let face_2d = [];
                 let face_3d = [];
-                let img_w = canvas.width;
-                let img_h = canvas.height;
+                let img_w = width_img;
+                let img_h = height_img;
 
                 // Define 3D model points.
                 let modelPoints = [
@@ -727,8 +726,8 @@
                     video.srcObject = stream;
                     video.onloadedmetadata = (e) => {
                         video.play();
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
+                        canvas.width = width_img;
+                        canvas.height = height_img;
                         onFrame(); // Start the frame processing loop
                     };
                 })
