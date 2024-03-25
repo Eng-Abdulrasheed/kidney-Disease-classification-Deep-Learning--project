@@ -96,7 +96,7 @@ clApp = ClientApp()  # Move this outside to ensure it's initialized globally
 
 @app.route("/", methods=['GET'])
 def home():
-    return render_template('index10.html')
+    return render_template('index11.html')
 
 @app.route("/predict", methods=['POST'])
 @app.route("/predict", methods=['POST'])
@@ -112,10 +112,11 @@ def predictBatchRoute():
         directions.append(direction_info)
         result = clApp.classifier.predict()
         if result is not None:
+            print(result)
             predictions.append(float(result))
 
     average_prediction = sum(predictions) / len(predictions) if predictions else 0
-    response_message = "Real" if average_prediction > 0.3 else "Fake"
+    response_message = "Real" if average_prediction > 0.1 else "Fake"
 
     return jsonify({
         "message": response_message,
