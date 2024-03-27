@@ -6,6 +6,8 @@ from cnnClassifier.pipeline.prediction import PredictionPipeline
 import mediapipe as mp
 import cv2
 import numpy as np
+import base64
+
 
 def detect_face_direction(image_path, face_mesh):
     image = cv2.imread(image_path)
@@ -78,6 +80,37 @@ def detect_face_direction(image_path, face_mesh):
 
 
 app = Flask(__name__)
+# Prepare the video writer
+fourcc = cv2.VideoWriter_fourcc(*'mp4v')
+out = None
+frame_size = (640, 480)  # You might need to adjust this
+fps = 20
+
+@app.route('/video_frame', methods=['POST'])
+def video_frame():
+    global out
+    data = request.json['image']
+    header, encoded = data.split(",", 1)
+    decoded = base64.b64decode(encoded)
+    nparr = np.frombuffer(decoded, np.uint8)
+    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+
+    # Initialize the video writer the first time a frame is received
+    if out is None:
+        out = cv2.VideoWriter('output_video.mp4', fourcc, fps, (img.shape[1], img.shape[0]))
+    
+    out.write(img)
+    return jsonify(success=True)
+
+@app.route('/stop_recording', methods=['GET'])
+def stop_recording():
+    global out
+    if out is not None:
+        out.release()
+        out = None
+    return jsonify(success=True)
+
+
 CORS(app)
 
 class ClientApp:
@@ -127,6 +160,6 @@ def predictBatchRoute():
 
 if __name__ == "__main__":
     if os.path.exists('cert.pem') and os.path.exists('key.pem'):
-        app.run(host='0.0.0.0', port=8000, ssl_context=('cert.pem', 'key.pem'))
+        app.run(host='0.0.0.0', port=8001, ssl_context=('cert.pem', 'key.pem'))
     else:
-        app.run(host='0.0.0.0', port=8000)
+        app.run(host='0.0.0.0', port=8001)

@@ -32,6 +32,7 @@
             transform: translateX(-50%);
             width: 80%;
             max-width: 800px;
+            display: none;
         }
 
         .image-part {
@@ -126,35 +127,148 @@
 
 
         .erate {
+            display: none;
             position: absolute;
             height: 27px;
             width: 90px;
-            background: #ff0606;
+            background: #ff0606; /* Initial color */
             z-index: 1000;
             border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white; /* Text color */
+            font-weight: bold;
+            transition: background-color 0.5s ease; /* Smooth transition for background color */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Soft shadow for depth */
+            
+        }
+        
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
           }
+          
+          .blinking {
+              animation: blink 1s infinite; /* Blink every second */
+          }
+          .distance-message {
+            font-weight: bold; /* Make the text bolder */
+            color: #B8860B; /* Clear yellow color for visibility */
+            font-size: 20px; /* Larger font size for clarity */
+            padding: 10px; /* Some padding for better spacing */
+            border: 2px solid #FFEB3B; /* Bolder line with a clear color */
+            border-radius: 5px; /* Optional: adds rounded corners */
+            background-color: rgba(255, 235, 59, 0.2); /* Optional: soft background color */
+            margin: 20px 0; /* Adjust spacing around the message */
+        }        
+
+        #instructionContent {
+            position: absolute; /* Position it absolutely within the body, which should have relative positioning */
+            top: 5%; /* 5% from the top of the window */
+            left: 50%; /* Centered horizontally */
+            transform: translateX(-50%); /* Offset it by half its width to center align */
+            width: 600px; /* Or any width you prefer */
+            background: #f8f9fa; /* Light grey background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+
+        
+        body {
+            display: flex;
+            align-items: flex-start; /* Aligns the child content at the top */
+            justify-content: center; /* Centers the child content horizontally */
+            padding-top: 40px; /* Adds some space at the top */
+            margin: 0;
+        }
+        
+        /* You may also want to adjust the button style if needed */
+        #instructionContent button#startButton {
+            padding: 10px 20px;
+            font-size: 18px; /* Larger font size */
+            width: 100px; /* Fixed width */
+            margin-top: 20px; /* Space above the button */
+        }
+        
+        
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #fff; /* Set the background to white */
+        }
+        
+        .modal-container {
+            display: flex;
+            justify-content: center;
+            position: fixed;
+            top: 0; /* Align to the top */
+            left: 0;
+            width: 100%;
+            height: 100vh; /* Full viewport height */
+            background-color: rgba(255, 255, 255, 0.9); /* White background with slight transparency */
+            z-index: 1050; /* Above other elements */
+            align-items: flex-start; /* Align modal content to the top */
+        }
+        
+        .modal-content {
+            margin-top: 50px; /* Distance from the top */
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            width: auto;
+        }
+        
+        .modal-icon {
+            width: 50px; /* Adjust as necessary */
+            height: auto;
+            margin-bottom: 20px;
+        }
+        
+        
+        
+          
      
     </style>
 </head>
 <body>
-    <div class="main container">
+    <!-- Instructional Content -->
+    <div id="instructionContent" class="container" style="text-align: center; margin-top: 20px;">
+        <h3>Selfie time!</h3>
+        <p>Get ready:</p>
+        <ul>
+            <li>Good illumination.</li>
+            <li>No accessories: glasses, mask, hat, etc.</li>
+            <li>Camera at eye level.</li>
+        </ul>
+        <button type="button" class="btn btn-primary" id="startButton">Go</button>
+    </div>
+
+    <!-- Main Container (Initially Hidden) -->
+    <div class="main container" style="display: none;">
         <div class="row">
             <div class="col-12 col-6">
                 <section class="iupload">
-                    <h3>Web Camera Image Capture</h3>
+                    <h3>Fintechsys Liveness System</h3>
+                    <div class="distance-message" style="text-align: center; margin-bottom: 20px;"></div>
                     <div class="image-part">
                         <video id="video" autoplay playsinline></video>
                         <canvas id="canvas"></canvas>
                         
                         <div class="powered-by">Powered by Fintechsys</div>
                         <div id="erate" class="erate"></div>
-                        
                     </div>
-                    <div class="btn-part">
-                        <button id="capture" type="button" class="btn btn-primary">Capture & Predict</button>
-                        
-                        
-                    </div>
+                    
                     <h5>Prediction Results</h5>
                     <div class="res-part" style="border:1px solid #dedede; height: 310px; overflow:auto;">
                         <div class="jsonRes"></div>
@@ -163,19 +277,161 @@
             </div>
         </div>
     </div>
-    <div id="loading"><div class="loader"></div></div>
+
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+    <!-- Success Message Modal (Initially Hidden) -->
+    <div id="successModal" class="modal-container" style="display: none;">
+        <div class="modal-content text-center">
+            <img src="{{ url_for('static', filename='icons/sucess-icon.png') }}" alt="Verified" class="modal-icon mx-auto text-center">
+            <h3>Verified!</h3>
+            <p>Successfully verified as a live person.</p>
+            <button type="button" class="btn btn-primary" id="startOverButton">Start Over</button>
+        </div>
+    </div>
+
+    <!-- Failure Message Modal (Initially Hidden) -->
+    <div id="failureModal" class="modal-container" style="display: none;">
+        <div class="modal-content text-center">
+            <img src="{{ url_for('static', filename='icons/not-sucess-icon.png') }}" alt="Not Verified" class="modal-icon  mx-auto text-center">
+            <h3>Not Verified</h3>
+            <p>Could not verify as a live person. Please try again.</p>
+            <button type="button" class="btn btn-primary" id="tryAgainButton">Try Again</button>
+        </div>
+    </div>
+
+    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/nicolaspanel/numjs@0.15.1/dist/numjs.min.js"></script> 
     <script src="{{ url_for('static', filename='js/opencv.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Include Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 
     <script>
+        
+        const captureButton = document.getElementById('startButton');
+        
+        $(document).ready(function(){
+            // Assuming $("#instructionModal").modal('show'); was for the initial modal approach
+            // Now, you have replaced it with direct content, so we don't need to show the modal on page load.
+
+            // Adding the event listener to the 'Go' button
+            captureButton.addEventListener('click', function(){
+                // Hide the instructional content and show the main content
+                $('#instructionContent').hide(); // This is the correct action for your current setup
+                $('.main').show(); // Ensure the main content is shown
+                startCamera();
+
+                // Continue with your existing functionality
+                if (images.length === 0) {
+                    shuffleArray(styles);
+                    rotateAndCapture();
+                }
+            });
+        });
+
+        // for sucess message or not sucess
+
+        $(document).ready(function() {
+            // Existing initialization code
+        
+            // Event listener for the 'Start Over' button in the success modal
+            $('#startOverButton').click(function() {
+                $('#successModal').hide(); // Hide the success modal
+                location.reload(); // Reload the page to start over
+            });
+        
+            // Event listener for the 'Try Again' button in the failure modal
+            $('#tryAgainButton').click(function() {
+                $('#failureModal').hide(); // Hide the failure modal
+                location.reload(); // Reload the page to start over
+            });
+        });
+
+        // initial the camera and Store video
+        var mediaRecorder;
+        var recordedChunks = [];
+
+        function startCamera() {
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+            .then(function(stream) {
+                videoStream = stream; // Assign the stream to the global variable
+                video.srcObject = stream;
+                
+                // Initialize MediaRecorder
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = handleDataAvailable;
+                mediaRecorder.start();
+                
+                video.onloadedmetadata = function() {
+                    adjustVideoCanvasSize();
+                    video.play();
+                    onFrame(); // Start the frame processing loop
+                };
+            })
+            .catch(function(error) {
+                console.error("Camera access error:", error);
+                alert("Could not access the camera. Error: " + error.name);
+            });
+        }
+
+        function handleDataAvailable(event) {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+            }
+        }
+
+        function stopCamera() {
+            if (mediaRecorder && mediaRecorder.state === "recording") {
+                mediaRecorder.stop();
+            }
+            // Existing code to stop the camera
+            if (videoStream) {
+                videoStream.getTracks().forEach(track => track.stop());
+            }
+            video.srcObject = null;
+            videoStream = null; // Reset the global variable
+        }
+
+        function saveRecordedVideo() {
+            const blob = new Blob(recordedChunks, {
+                type: "video/webm"
+            });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            a.href = url;
+            a.download = "recorded_video.webm";
+            a.click();
+            window.URL.revokeObjectURL(url);
+        }
+
+        
+        
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
-        const captureButton = document.getElementById('capture');
+        var faceDirection;
 
+        const faceMesh = new FaceMesh({
+            locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
+        });
+        faceMesh.setOptions({
+            maxNumFaces: 1,
+            minDetectionConfidence: 0.5,
+            minTrackingConfidence: 0.5,
+            refineLandmarks: true,
+        });
+        faceDirection =  faceMesh.onResults(onResults);
+       // console.log("Onresult face direction",faceDirection);
+        
     
         // Define an array of style configurations
         var styles = [
@@ -207,7 +463,6 @@
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
-
     
         function applyStyle(style) {
             const erateElement = document.querySelector('.erate');
@@ -217,10 +472,13 @@
             erateElement.style.bottom = style.bottom;
             erateElement.style.transform = style.transform;
         }
+        const width_img = 480;
+        const height_img = 320;
     
         function captureImage() {
+            captureIndex++;
             adjustVideoCanvasSize();
-            context.drawImage(video, 0, 0, canvas.width, canvas.height); 
+            context.drawImage(video, 0, 0,width_img, height_img); 
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
             images.push(base64data);
     
@@ -236,115 +494,156 @@
                 }, 1000); // 6 seconds for each capture cycle
             }
         }
-
+        // Determine the style of the erate element
         function determineExpectedDirection(style) {
             // Simplified logic based on your style definitions
-            if (style.left) return "Right";
-            if (style.right) return "Left";
-            if (style.top) return "Down";
-            if (style.bottom) return "Up";
+            if (style.left) return "Left";
+            if (style.right) return "Right";
+            if (style.top) return "Up";
+            if (style.bottom) return "Down";
             // Extend this logic based on your actual style-to-direction mappings
             return "Forward"; // Fallback direction
         }
-        
-        function getCurrentTranslationVector(){
-            
-        }
-    
 
+
+    
+        // Step 3: Access the global variable in rotateAndCapture
+
+        function checkLighting() {
+            const canvasContext = canvas.getContext('2d');
+            canvasContext.drawImage(video, 0, 0, width_img, height_img);
+            const imageData = canvasContext.getImageData(0, 0, width_img, height_img);
+            let totalBrightness = 0;
+        
+            for (let i = 0; i < imageData.data.length; i += 4) {
+                // Convert the color to grayscale using luminance formula
+                totalBrightness += 0.2126 * imageData.data[i] + 0.7152 * imageData.data[i + 1] + 0.0722 * imageData.data[i + 2];
+            }
+        
+            const avgBrightness = totalBrightness / (width_img * height_img);
+            return avgBrightness;
+        }
+
+        
         function rotateAndCapture() {
             if (captureIndex < styles.length) {
                 const currentStyle = styles[captureIndex];
                 applyStyle(currentStyle);
-
-                // Adding a slight delay for the user to adjust their head direction
-                setTimeout(() => {
-                    // Here, you'll need to invoke your face tracking logic to get the current translation vector
-                    // and then call estimateDirection. This is a simplified example:
-                    const translationVec = getCurrentTranslationVector(); // You need to implement this
-                    estimateDirection(translationVec, (actualDirection) => {
-                        const expectedDirection = determineExpectedDirection(currentStyle);
-                        if (actualDirection === expectedDirection) {
-                            console.log("Directions match. Capturing image.");
-                            captureImage(); // Assuming this function captures the image
+        
+                let attemptStartTime = Date.now(); // Track the start time of this attempt
+        
+                const checkDirectionAndDistanceAndCapture = () => {
+                    const erateElement = document.getElementById('erate');
+                    const distanceMessageElement = document.querySelector('.distance-message');
+                    const expectedDirection = determineExpectedDirection(currentStyle);
+                    const avgBrightness = checkLighting(); // Check the lighting here
+        
+                    // Define thresholds
+                    const brightnessThreshold = 70; // Adjust this threshold based on your needs
+                    const minDistanceThreshold = 30;
+                    const maxDistanceThreshold = 40;
+                    
+                    // Check if the distance is within the acceptable range and if the brightness is good
+                    if (lastCalculatedDistance >= minDistanceThreshold && lastCalculatedDistance <= maxDistanceThreshold && avgBrightness >= brightnessThreshold) {
+                        distanceMessageElement.textContent = ''; // Clear any previous message
+                        console.log(avgBrightness)
+                        let elapsedTime = Date.now() - attemptStartTime;
+        
+                        if (globalFaceDirection === expectedDirection) {
+                            erateElement.style.backgroundColor = "#4CAF50"; // Green color for success
+                            erateElement.classList.remove("blinking"); // Stop blinking on match
+                            setTimeout(() => {
+                                captureImage();
+                            }, 500);
+                        } else if (elapsedTime <= 8000) {
+                            erateElement.style.backgroundColor = "#FF5733"; // Red color for attention
+                            erateElement.classList.add("blinking"); // Continue blinking to indicate mismatch
+                            setTimeout(checkDirectionAndDistanceAndCapture, 200); // Check more frequently within the 5-second window
                         } else {
-                            console.log(`Direction mismatch. Expected: ${expectedDirection}, Actual: ${actualDirection}.`);
-                            // Handle direction mismatch (e.g., retry, give feedback, etc.)
+                            displayFailureMessage("Please adjust your position and try again.");
                         }
-                    });
-                }, 1000); // Wait 1 second before checking the direction
-
-                captureIndex++;
+                    } else {
+                        // Handle cases for poor distance or lighting
+                        if (avgBrightness < brightnessThreshold) {
+                            distanceMessageElement.textContent = "اختر اضاءة جيدة";
+                        } else if (lastCalculatedDistance < minDistanceThreshold) {
+                            distanceMessageElement.textContent = "من فضلك ابتعد قليلا عن الكاميرا";
+                        } else if (lastCalculatedDistance > maxDistanceThreshold) {
+                            distanceMessageElement.textContent = "فضلا..عليك الاقتراب قليلا من الكامير";
+                        }
+        
+                        erateElement.style.backgroundColor = "#FFEB3B"; // Yellow color for warning
+                        setTimeout(checkDirectionAndDistanceAndCapture, 2000); // Re-check after some time
+                    }
+                };
+        
+                setTimeout(checkDirectionAndDistanceAndCapture, 500); // Initial direction check after a short delay
+            } else {
+                console.log("Session completed or no styles to process.");
             }
         }
+        
+        
+        
+        function displayFailureMessage() {
+            // Show failure message with a "Start Over" button
+            document.querySelector('.res-part').innerHTML = `
+                <div class="alert alert-danger" role="alert">
+                    Face direction not correct. Start again.
+                </div>
+                <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
+            `;
+        
+            // Setup "Start Over" button to reset the process
+            document.getElementById('start-over').addEventListener('click', function() {
+                location.reload(); // Reload the page to start over
+            });
+        }
+        
+        
+        
 
-            
-        captureButton.addEventListener('click', function() {
-            if (images.length === 0) {
-                shuffleArray(styles);
-                rotateAndCapture();
-            }
-        });
-    
-        function sendImagesForPrediction(images) {``
+
+
+        function sendImagesForPrediction(images) {
             $("#loading").show();
             $.ajax({
-                url: "/predict", // Ensure this URL matches your server's endpoint
+                url: "/predict",
                 type: "POST",
-                data: JSON.stringify({ images: images }), // Sending array of images
+                data: JSON.stringify({ images: images }),
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function(response) {
                     $("#loading").hide();
-                    images = []; // Reset images for the next operation
-        
-                    let directionsMessage = "";
-                    if (response.directions && response.directions.length > 0) {
-                        // Process each direction with its angles
-                        directionsMessage = response.directions.map((item, index) => {
-                            const direction = item.direction;
-                            const angles = item.angles;
-                            return `<li>Image ${index + 1}: ${direction} (x: ${angles.x.toFixed(2)}, y: ${angles.y.toFixed(2)}, z: ${angles.z.toFixed(2)})</li>`;
-                        }).join('');
-                        directionsMessage = `<ul>${directionsMessage}</ul>`;
-                    }
-        
-                    if(response.average_prediction > 0.5) {
-                        // Success case
-                        document.querySelector('.jsonRes').innerHTML = `
-                            <div class="alert alert-success" role="alert">
-                                Verified! Successfully verified as a live person. ${directionsMessage}
-                            </div>
-                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>
-                        `;
+                    $('.main').hide(); // Hide the main model
+                    stopCamera();
+                    if (response.average_prediction > 0.1) {
+                        $('#successModal').show(); // Show success modal
                     } else {
-                        // Failure case
-                        document.querySelector('.jsonRes').innerHTML = `
-                            <div class="alert alert-danger" role="alert">
-                                Not verified. Please try again. ${directionsMessage}
-                            </div>
-                            <button type="button" class="btn btn-primary" id="start-over">Start Over</button>`;
+                        $('#failureModal').show(); // Show failure modal
                     }
-        
-                    document.getElementById('start-over').addEventListener('click', function() {
-                        location.reload(); // Reload the page to start over
-                    });
                 },
                 error: function(err) {
-                    console.error("Error in sending/receiving data.", err);
                     $("#loading").hide();
+                    console.error("Error in sending/receiving data.", err);
+                    // Optionally, handle the error by showing the failureModal
+                    $('.main').hide(); // Hide the main model
+                    $('#failureModal').show(); // Show failure modal
                 }
             });
-        }        
-              
-    
+        }
+               
+        
         function adjustVideoCanvasSize() {
-            canvas.width = video.videoWidth;
+            canvas.width = width_img;
             canvas.height = video.videoHeight;
         }
         // Your existing mediaDevices and FaceMesh setup here
         // No changes needed for those parts
+       /*
         if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+
+            
             navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
             .then(function(stream) {
                 video.srcObject = stream;
@@ -354,11 +653,12 @@
                 console.log("An error occurred: " + err);
             });
         }
+       */
     
         captureButton.addEventListener('click', function() {
     
             adjustVideoCanvasSize(); // Ensure canvas size is correct at the moment of capture
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+            context.drawImage(video, 0, 0, width_img, height_img);
             var base64data = canvas.toDataURL('image/jpeg').replace(/^data:image\/jpeg;base64,/, '');
             
             $("#loading").show();
@@ -378,32 +678,68 @@
             });
     
         });
+        
+        let globalFaceDirection; // Step 1: Define a global variable
+        let lastCalculatedDistance = 0; // Initialize with 0 or suitable default value
+
+
+        // Step 2: Update the global variable within onResults
         function onResults(results) {
             context.save();
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.drawImage(results.image, 0, 0, canvas.width, canvas.height);
-
-            
-
+            context.clearRect(0, 0, width_img, height_img);
+            context.drawImage(results.image, 0, 0, width_img, height_img);
+            // Compute the depth of z axes from the left eye
+            var width = results.image.width;
+            var height = results.image.height;
+           // console.log(width);
+           // console.log(height);
+            var irisLeftMinX = Infinity; // Initialize to Infinity for min comparison
+            var irisLeftMaxX = -Infinity; // Initialize to -Infinity for max comparison
+        
             if (results.multiFaceLandmarks) {
                 for (const landmarks of results.multiFaceLandmarks) {
                     drawConnectors(context, landmarks, FACEMESH_TESSELATION, { color: '#C0C0C070', lineWidth: 1 });
-                    getDirection(landmarks);
+                    globalFaceDirection = getDirection(landmarks); // Update the global variable
+        
+                    for (const point of FACEMESH_LEFT_IRIS) {
+                        if (landmarks[point[0]]) {
+                            var point0 = landmarks[point[0]];
+                           // console.log(point0);
+                            //console.log(point0.z);
+        
+                            if (irisLeftMinX == -1 || point0.x * width < irisLeftMinX) {
+                                irisLeftMinX = point0.x * width;
+                            }
+                            if (irisLeftMaxX == -1 || point0.x * width > irisLeftMaxX) {
+                                irisLeftMaxX = point0.x * width;
+                            }
+                        }
+                    }
                     
+                    // Ensure you break after the first face for efficiency, if that's your intention
+                    break; // This breaks out of the multiFaceLandmarks loop
                 }
-            
             }
+        
+            // Ensure irisLeftMinX and irisLeftMaxX have been updated correctly
+            var dx = irisLeftMaxX - irisLeftMinX;
+            if (dx > 0) { // Ensure dx is not zero to avoid division by zero
+                var dX = 11.7;
+                // Logitech HD Pro C922 Norm focal
+                var normalizedFocaleX = 1.40625;
+                var fx = Math.min(width, height) * normalizedFocaleX;
+                var dZ = (fx * (dX / dx)) / 10.0;
+                dZ = dZ.toFixed(2);
+                console.log(dZ, "Cm");
+                lastCalculatedDistance = dZ;
+            } else {
+                console.log("Invalid iris dimensions for depth calculation.");
+            }
+        
             context.restore();
-        }        
-            const faceMesh = new FaceMesh({
-                locateFile: (file) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
-            });
-            faceMesh.setOptions({
-                maxNumFaces: 1,
-                minDetectionConfidence: 0.5,
-                minTrackingConfidence: 0.5,
-            });
-            faceMesh.onResults(onResults);
+        }
+        
+            
 
 
                         // Assuming the necessary OpenCV.js library is loaded and available as cv
@@ -411,48 +747,54 @@
 
             function adjustVideoCanvasSize() {
                 // Adjust canvas size to match video stream size
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
+                canvas.width = width_img;
+                canvas.height = height_img;
             }
                         
-            function estimateDirection(translation_vec, callback) {
+            function estimateDirection(translation_vec) {
                 let direction = "Forward"; // Default direction
             
                 // Access the translation vector components
                 let tx = translation_vec.doubleAt(0); // Horizontal movement
                 let ty = translation_vec.doubleAt(1); // Vertical movement
+               // console.log(translation_vec.doubleAt(2));
             
                 // Adjust thresholds if necessary, based on observation
-                const thresholdX = 15;
-                const thresholdY = 15;
+                const thresholdX = 8;
+                const thresholdY = 8;
             
-                // Determine primary direction based on the translation vector's magnitude
+                // Determine primary direction
                 if (Math.abs(tx) > Math.abs(ty)) { // Horizontal movement is more significant
-                    if (tx > thresholdX) {
+                    if (tx > thresholdX) { // Note the inversion of comparison operator
                         direction = "Left"; // Assuming positive tx is to the subject's right, which is "Left" from the observer's perspective
                     } else if (tx < -thresholdX) {
                         direction = "Right"; // Negative tx to the subject's left, "Right" from observer's view
                     }
                 } else { // Vertical movement is more significant
-                    if (ty > thresholdY) {
+                    if (ty > thresholdY) { // Note the inversion of comparison operator
                         direction = "Down"; // Assuming positive ty is downward movement
                     } else if (ty < -thresholdY) {
                         direction = "Up"; // Negative ty is upward movement
                     }
                 }
             
-                // Invoke the callback with the estimated direction
-                callback(direction);
+                // Update the webpage with the estimated direction
+                const erateElement = document.getElementById('erate');
+               // erateElement.textContent = direction;
+                erateElement.style.display = 'block'; // Ensure the element is visible
+            
+              // console.log("Estimated Direction:", direction);
+               return direction
             }
 
             function getDirection(landmarks) {
                 adjustVideoCanvasSize();
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                context.drawImage(video, 0, 0, width_img, height_img);
 
                 let face_2d = [];
                 let face_3d = [];
-                let img_w = canvas.width;
-                let img_h = canvas.height;
+                let img_w = width_img;
+                let img_h = height_img;
 
                 // Define 3D model points.
                 let modelPoints = [
@@ -507,15 +849,17 @@
 
                 let direction =  estimateDirection(translation_vec); 
                 
-                console.log("Pose estimation succeeded:", direction);
+               // console.log("Pose estimation succeeded:", direction);
 
                 // Assuming success, we proceed, but note that actual direction determination logic is missing here
-                console.log("Pose estimation succeeded");
+               // console.log("Pose estimation succeeded");
 
                 // Cleanup
                 face_2d_mat.delete(); face_3d_mat.delete();
                 cam_matrix.delete(); dist_coeffs.delete();
                 rotation_vec.delete(); translation_vec.delete();
+
+                return direction;
             }
 
             // Example usage of getDirection function, assuming landmarks are obtained from a facial landmark detection library
@@ -529,13 +873,18 @@
                 });
             }
     
+
+
+
+            
+           /*
             navigator.mediaDevices.getUserMedia({video: true})
                 .then((stream) => {
                     video.srcObject = stream;
                     video.onloadedmetadata = (e) => {
                         video.play();
-                        canvas.width = video.videoWidth;
-                        canvas.height = video.videoHeight;
+                        canvas.width = width_img;
+                        canvas.height = height_img;
                         onFrame(); // Start the frame processing loop
                     };
                 })
@@ -543,6 +892,7 @@
                     console.error(error);
                     alert("Could not access the camera. Error: " + error.name);
                 });
+           */
                
     </script>
     
