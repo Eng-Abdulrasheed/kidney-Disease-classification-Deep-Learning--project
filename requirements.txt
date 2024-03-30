@@ -18,5 +18,6 @@ scipy
 Flask
 Flask-Cors
 gdown
+websocket-client
 python-magic
 -e .

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Streaming</title>
+</head>
+<body>
+    <h1>Video Streaming</h1>
+    <button id="startButton">Start Camera</button>
+    <button id="stopButton" disabled>Stop Camera</button>
+    <video id="videoElement" autoplay></video>
+    <script>
+        const videoElement = document.getElementById('videoElement');
+        const startButton = document.getElementById('startButton');
+        const stopButton = document.getElementById('stopButton');
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        startButton.addEventListener('click', async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                videoElement.srcObject = stream;
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.ondataavailable = handleDataAvailable;
+                mediaRecorder.start();
+                startButton.disabled = true;
+                stopButton.disabled = false;
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        });
+
+        stopButton.addEventListener('click', () => {
+            mediaRecorder.stop();
+            startButton.disabled = false;
+            stopButton.disabled = true;
+        });
+
+        function handleDataAvailable(event) {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+                sendData(event.data);
+            }
+        }
+
+        async function sendData(data) {
+            const formData = new FormData();
+            formData.append('video_frames', data);
+            try {
+                const response = await fetch('/receive_video_frames', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                console.log(result.message);
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -356,18 +356,17 @@
 
         // initial the camera 
        // Adapted startCamera function
-       let captureInterval;
        function startCamera() {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
-        .then(function(stream) {
-            video.srcObject = stream;
-            video.onloadedmetadata = function() {
-                adjustVideoCanvasSize();
-                video.play();
-                startSendingFrames();
-                onFrame();
-                
-            };
+            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
+            .then(function(stream) {
+                video.srcObject = stream;
+                video.onloadedmetadata = function() {
+                    adjustVideoCanvasSize();
+                    video.play();
+                    startSendingFrames();
+                    onFrame();
+                    
+                };
         })
         .catch(function(error) {
             console.error("Camera access error:", error);
@@ -375,23 +374,27 @@
         });
     }
     
+    let frameInterval;
+
     function startSendingFrames() {
-        (function sendFrame() {
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+
+        frameInterval = setInterval(() => {
             context.drawImage(video, 0, 0, canvas.width, canvas.height);
             const frame = canvas.toDataURL('image/jpeg');
             fetch('/video_frame', {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({image: frame})
-            }).then(() => {
-                requestAnimationFrame(sendFrame); // Continue sending frames
             });
-        })();
+        }, 50); // Adjust the interval (in milliseconds) as needed
     }
+
+    
     
     function stopCamera() {
+        clearInterval(frameInterval);
         fetch('/stop_recording', {method: 'GET'});
         if (video.srcObject) {
             video.srcObject.getTracks().forEach(track => track.stop());
@@ -860,27 +863,6 @@
                 });
             }
     
-
-
-
-            
-           /*
-            navigator.mediaDevices.getUserMedia({video: true})
-                .then((stream) => {
-                    video.srcObject = stream;
-                    video.onloadedmetadata = (e) => {
-                        video.play();
-                        canvas.width = width_img;
-                        canvas.height = height_img;
-                        onFrame(); // Start the frame processing loop
-                    };
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Could not access the camera. Error: " + error.name);
-                });
-           */
-               
     </script>
     
 </body>

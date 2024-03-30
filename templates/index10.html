@@ -355,33 +355,65 @@
         });
 
         // initial the camera 
-        function startCamera() {
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
-            .then(function(stream) {
-                video.srcObject = stream;
-                video.onloadedmetadata = function() {
-                    adjustVideoCanvasSize();
-                    video.play();
-                    onFrame(); // Start the frame processing loop
-                };
-            })
-            .catch(function(error) {
-                console.error("Camera access error:", error);
-                alert("Could not access the camera. Error: " + error.name);
-            });
-        }
+        // HTML video element
 
-        // stop camera
+// Variables to hold the stream and sender
+let videoStream;
+let videoSender;
 
-        function stopCamera() {
-            if (video.srcObject) {
-                video.srcObject.getTracks().forEach(track => track.stop());
+// Function to start the camera and streaming
+async function startCamera() {
+    try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } });
+        videoStream = stream;
+        video.srcObject = stream;
+        video.play();
+        startStreaming();
+        onFrame();
+    } catch (error) {
+        console.error("Camera access error:", error);
+        alert("Could not access the camera. Error: " + error.name);
+    }
+}
+
+// Function to start streaming video frames
+async function startStreaming() {
+    const peerConnection = new RTCPeerConnection();
+    videoSender = peerConnection.addTrack(videoStream.getVideoTracks()[0], videoStream);
+
+    try {
+        const offer = await peerConnection.createOffer();
+        await peerConnection.setLocalDescription(offer);
+        const response = await fetch('/offer', {
+            method: 'POST',
+            body: JSON.stringify({ sdp: peerConnection.localDescription }),
+            headers: {
+                'Content-Type': 'application/json'
             }
-            video.srcObject = null;
-        }
-        
-        
-        
+        });
+        const answer = await response.json();
+        await peerConnection.setRemoteDescription(answer);
+    } catch (error) {
+        console.error('Error creating or sending offer:', error);
+    }
+}
+
+// Function to stop the camera and streaming
+function stopCamera() {
+    if (videoSender) {
+        videoSender.track.stop();
+        videoSender = null;
+    }
+    if (videoStream) {
+        videoStream.getTracks().forEach(track => track.stop());
+        videoStream = null;
+    }
+    video.srcObject = null;
+}
+
+
+// Make sure to handle receiving the offer, creating an answer, and setting up the remote description on the other end.
+
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
         const context = canvas.getContext('2d');
@@ -839,27 +871,7 @@
                     window.requestAnimationFrame(onFrame);
                 });
             }
-    
 
-
-
-            
-           /*
-            navigator.mediaDevices.getUserMedia({video: true})
-                .then((stream) => {
-                    video.srcObject = stream;
-                    video.onloadedmetadata = (e) => {
-                        video.play();
-                        canvas.width = width_img;
-                        canvas.height = height_img;
-                        onFrame(); // Start the frame processing loop
-                    };
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Could not access the camera. Error: " + error.name);
-                });
-           */
                
     </script>
     

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Video Stream with KMS</title>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const videoElement = document.getElementById('video');
+            const startRecordingButton = document.getElementById('startRecording');
+            const stopRecordingButton = document.getElementById('stopRecording');
+
+            // Get user media
+            navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+                .then(stream => {
+                    videoElement.srcObject = stream;
+                    // Placeholder for additional WebRTC setup as needed
+                })
+                .catch(error => console.error('Error accessing media devices.', error));
+
+            startRecordingButton.addEventListener('click', () => {
+                fetch('/start_recording', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // Include additional data if needed
+                }).then(() => {
+                    startRecordingButton.disabled = true;
+                    stopRecordingButton.disabled = false;
+                });
+            });
+
+            stopRecordingButton.addEventListener('click', () => {
+                fetch('/stop_recording', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    // Include additional data if needed
+                }).then(() => {
+                    stopRecordingButton.disabled = true;
+                    startRecordingButton.disabled = false;
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <video id="video" autoplay playsinline></video>
+    <button id="startRecording">Start Recording</button>
+    <button id="stopRecording" disabled>Stop Recording</button>
+</body>
+</html>

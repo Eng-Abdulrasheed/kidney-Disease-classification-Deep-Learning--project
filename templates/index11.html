@@ -355,55 +355,67 @@
         });
 
         // initial the camera 
-       // Adapted startCamera function
-       function startCamera() {
+        let mediaRecorder;
+        let recordedChunks = [];
+
+        function startCamera() {
             navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } })
-            .then(function(stream) {
-                video.srcObject = stream;
-                video.onloadedmetadata = function() {
-                    adjustVideoCanvasSize();
-                    video.play();
-                    startSendingFrames();
-                    onFrame();
-                    
-                };
-        })
-        .catch(function(error) {
-            console.error("Camera access error:", error);
-            alert("Could not access the camera. Error: " + error.name);
-        });
-    }
-    
-    let frameInterval;
-
-    function startSendingFrames() {
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-
-        frameInterval = setInterval(() => {
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            const frame = canvas.toDataURL('image/jpeg');
-            fetch('/video_frame', {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({image: frame})
-            });
-        }, 50); // Adjust the interval (in milliseconds) as needed
-    }
-
-    
-    
-    function stopCamera() {
-        clearInterval(frameInterval);
-        fetch('/stop_recording', {method: 'GET'});
-        if (video.srcObject) {
-            video.srcObject.getTracks().forEach(track => track.stop());
+                .then(function(stream) {
+                    video.srcObject = stream;
+                    video.onloadedmetadata = function() {
+                        adjustVideoCanvasSize();
+                        video.play();
+                        startRecording(); // Start recording video frames
+                        onFrame();
+                    };
+                })
+                .catch(function(error) {
+                    console.error("Camera access error:", error);
+                    alert("Could not access the camera. Error: " + error.name);
+                });
         }
-        video.srcObject = null;
-        // Inform the backend to stop recording
-        
-    }
 
+        function startRecording() {
+            mediaRecorder = new MediaRecorder(video.srcObject);
+            mediaRecorder.ondataavailable = handleDataAvailable;
+            mediaRecorder.start();
+        }
+
+        function handleDataAvailable(event) {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+                sendData(event.data);
+            }
+        }
+
+        async function sendData(data) {
+            const formData = new FormData();
+            formData.append('video_frames', data);
+            try {
+                const response = await fetch('/receive_video_frames', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+                console.log(result.message);
+            } catch (error) {
+                console.error('Error sending data:', error);
+            }
+        }
+
+        function stopCamera() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+            if (video.srcObject) {
+                video.srcObject.getTracks().forEach(track => track.stop());
+            }
+            video.srcObject = null;
+            recordedChunks = [];
+        }
+
+        
+        
         
         const video = document.getElementById('video');
         const canvas = document.getElementById('canvas');
