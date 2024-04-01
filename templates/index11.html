@@ -437,6 +437,7 @@
     
         // Define an array of style configurations
         var styles = [
+            { transform: 'translate(-50%, -50%)', position: 'absolute', left: '50%', top: '50%' }, // Center
             { left: '-30px', transform: 'rotate(-90deg)', right: '', top: '', bottom: '' }, // Style One
             { right: '-30px', transform: 'rotate(-90deg)', left: '', top: '', bottom: '' }, // Style Two
             { bottom: '0', transform: 'rotate(0deg)', left: '', top: '', right: '' }, // Style Three
@@ -602,10 +603,7 @@
             });
         }
         
-        
-        
-
-
+    
 
         function sendImagesForPrediction(images) {
             $("#loading").show();
@@ -640,22 +638,7 @@
             canvas.width = width_img;
             canvas.height = video.videoHeight;
         }
-        // Your existing mediaDevices and FaceMesh setup here
-        // No changes needed for those parts
-       /*
-        if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-
-            
-            navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
-            .then(function(stream) {
-                video.srcObject = stream;
-                video.onloadedmetadata = adjustVideoCanvasSize; // Adjust size after video starts playing
-            })
-            .catch(function(err) {
-                console.log("An error occurred: " + err);
-            });
-        }
-       */
+       
     
         captureButton.addEventListener('click', function() {
     
@@ -741,11 +724,7 @@
             context.restore();
         }
         
-            
-
-
-                        // Assuming the necessary OpenCV.js library is loaded and available as cv
-            // Also assuming context, video, canvas are already defined and set up for capturing and displaying video frames
+        // Also assuming context, video, canvas are already defined and set up for capturing and displaying video frames
 
             function adjustVideoCanvasSize() {
                 // Adjust canvas size to match video stream size
@@ -874,27 +853,7 @@
                     window.requestAnimationFrame(onFrame);
                 });
             }
-    
 
-
-
-            
-           /*
-            navigator.mediaDevices.getUserMedia({video: true})
-                .then((stream) => {
-                    video.srcObject = stream;
-                    video.onloadedmetadata = (e) => {
-                        video.play();
-                        canvas.width = width_img;
-                        canvas.height = height_img;
-                        onFrame(); // Start the frame processing loop
-                    };
-                })
-                .catch((error) => {
-                    console.error(error);
-                    alert("Could not access the camera. Error: " + error.name);
-                });
-           */
                
     </script>
     

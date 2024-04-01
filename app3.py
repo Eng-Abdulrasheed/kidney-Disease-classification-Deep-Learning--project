@@ -1,3 +1,4 @@
+
 from flask import Flask, request, jsonify, render_template
 import os
 from flask_cors import CORS
@@ -9,9 +10,49 @@ import numpy as np
 import base64
 from datetime import datetime
 
+from minio import Minio
+from io import BytesIO
+import uuid
+
+app = Flask(__name__)
 
 
-def detect_face_direction(image_path, face_mesh):
+def generate_session_directory():
+    now = datetime.now()
+    session_uuid = uuid.uuid4()  # Unique identifier for the session
+    dir_path = f"faceapi-session/year2024/year={now.year}/month={now.month}/day={now.day}/hour={now.hour}/minute={now.minute}/{session_uuid}/"
+    return dir_path, session_uuid  # Return both the path and the UUID
+
+
+
+
+# Configure MinIO client
+minioClient = Minio(
+    "localhost:9000",  # Change to your MinIO server address
+    access_key="minioadmin",  # Change to your access key
+    secret_key="minioadmin",  # Change to your secret key
+    secure=False  # Set to True if using HTTPS
+)
+
+
+@app.route('/upload_image', methods=['POST'])
+def upload_image():
+    session_id = request.form.get('session_id')  # Assume the client sends this back
+    image = request.files['image']
+    now = datetime.now()
+    # Construct the directory path using the session ID received from the client
+    dir_path = f"faceapi-session/year2024/year={now.year}/month={now.month}/day={now.day}/hour={now.hour}/minute={now.minute}/{session_id}/"
+    file_path = os.path.join(dir_path, "image.jpg")
+    img_bytes = image.read()  # Reading the image file
+    upload_success = upload_to_minio("your-bucket-name", file_path, img_bytes, "image/jpeg")
+
+    message = 'Image saved to MinIO' if upload_success else 'Failed to save image to MinIO'
+    return jsonify({'message': message})
+
+
+
+
+def detect_face_direction(image_path, face_mesh, session_id):
     image = cv2.imread(image_path)
     image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
 
@@ -51,6 +92,7 @@ def detect_face_direction(image_path, face_mesh):
 
             x, y, z = angles[0] * 360, angles[1] * 360, angles[2] * 360
 
+            # Determine the direction
             if x > 10:
                 if y > 10:
                     direction = "Looking Up Right"
@@ -73,29 +115,35 @@ def detect_face_direction(image_path, face_mesh):
                 else:
                     direction = "Forward"
 
+            if direction == "Forward":
+                # Convert the annotated image to bytes
+                _, img_bytes = cv2.imencode('.jpg', image)
+                img_bytes = img_bytes.tobytes()
+
+                # Construct the file path based on the current datetime and a unique ID
+                now = datetime.now()
+                dir_path = f"year2024/year={now.year}/month={now.month}/day={now.day}/{session_id}/"  # Use session_id in path
+                file_path = f"{dir_path}image.jpg"
+                upload_success = upload_to_minio("your-bucket-name", file_path, img_bytes, "image/jpeg")
+                save_path = f"minio/your-bucket-name/{file_path}" if upload_success else None
+                return {"direction": direction, "angles": {"x": x, "y": y, "z": z}, "saved_image_path": save_path}
 
 
-            # Return both direction and angles
-            return {"direction": direction, "angles": {"x": x, "y": y, "z": z}}
-
-    return {"direction": "Unable to determine", "angles": None}
-
-
-app = Flask(__name__)
 
 UPLOAD_FOLDER = 'received_videos'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route('/receive_video_frames', methods=['POST'])
 def receive_video_frames():
+    dir_path, session_uuid = generate_session_directory()  # Now also returning the session UUID
     video_frames_binary = request.files['video_frames'].read()
-    # Generate a unique filename based on timestamp
-    filename = datetime.now().strftime("%Y%m%d%H%M%S") + '.mp4'
-    # Save video frames to a directory
-    filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
-    with open(filepath, 'wb') as f:
-        f.write(video_frames_binary)
-    return jsonify({'message': 'Video frames received and saved'})
+    file_path = os.path.join(dir_path, "video.mp4")
+    upload_success = upload_to_minio("your-bucket-name", file_path, video_frames_binary, "video/mp4")
+
+    message = 'Video frames received and saved to MinIO' if upload_success else 'Failed to save video frames to MinIO'
+    return jsonify({'message': message, 'session_id': str(session_uuid)})  # Return the session UUID to the client
+
+
 
 
 CORS(app)
@@ -119,15 +167,15 @@ def home():
     return render_template('index11.html')
 
 @app.route("/predict", methods=['POST'])
-
 def predictBatchRoute():
+    session_id = generate_session_id()
     images = request.json.get('images', [])  # Safely get images list
     predictions = []
     directions = []
 
     for base64_image in images:
         decodeImage(base64_image, clApp.filename)
-        direction_info = detect_face_direction(clApp.filename, clApp.face_mesh)  # Call the face direction function
+        direction_info = detect_face_direction(clApp.filename, clApp.face_mesh, session_id)  # Call the face direction function
         directions.append(direction_info)
         result = clApp.classifier.predict()
         if result is not None:

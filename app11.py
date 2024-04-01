@@ -19,7 +19,7 @@ def send_to_kms(message):
 @app.route('/')
 def index():
     """Serve the main HTML page."""
-    return render_template('index.html')
+    return render_template('index13.html')
 
 def start_recording_kms(recording_path):
     # This function should ideally create a MediaPipeline, a WebRtcEndpoint (linked to your video source),
